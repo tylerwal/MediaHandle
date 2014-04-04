@@ -66,6 +66,10 @@ namespace MediaHandleConsole
 
 			var om = optoMatches.Count();
 
+			var eventBetter = fileList.Where(f => mediaFileExtensions.Any(f.Extension.Equals));
+
+			var eb = eventBetter.Count();
+
 			var mediaSystemFiles = fileSystemInfos.Where(i => i.Name.Contains(mediaFileExtensions.First()));
 			
 			//var mediaFiles = files.Where(i => i.Name.Contains(mediaFileExtensions.First()));
