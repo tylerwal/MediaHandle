@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Security.Policy;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.IO;
-using System.Runtime.Serialization.Json;
+using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace MediaHandleConsole
 {
@@ -93,9 +89,9 @@ namespace MediaHandleConsole
 		{
 			try
 			{
-				string searchRequest = CreateRequest("Matrix");
+				string searchRequest = CreateRequest("The Matrix Revisited");
 
-				Response searchResponse = MakeRequest(searchRequest);
+				RootObject searchResponse = MakeRequest(searchRequest);
 			}
 			catch (Exception e)
 			{
@@ -105,7 +101,7 @@ namespace MediaHandleConsole
 		}
 
 		#region Helper Methods
-
+		
 		private static string CreateRequest(string queryString)
 		{
 			string urlRequest = _theMovieDbOrgUrl +
@@ -116,7 +112,7 @@ namespace MediaHandleConsole
 			return urlRequest;
 		}
 
-		private static Response MakeRequest(string requestUrl)
+		private static RootObject MakeRequest(string requestUrl)
 		{
 			try
 			{
@@ -128,11 +124,19 @@ namespace MediaHandleConsole
 						throw new Exception(String.Format("Server Error (HTTP {0}: {1}).", response.StatusCode, response.StatusDescription));
 					}
 
-					DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(Response));
+					DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(RootObject));
+
+					//Stream text = response.GetResponseStream();
+
+					//var sr = new StreamReader(text);
+
+					//var mystr = sr.ReadToEnd();
 
 					object objResponse = jsonSerializer.ReadObject(response.GetResponseStream());
-					
-					Response jsonResponse = objResponse as Response;
+
+
+
+					RootObject jsonResponse = objResponse as RootObject;
 
 					return jsonResponse;
 				}
@@ -146,15 +150,54 @@ namespace MediaHandleConsole
 
 		#endregion Helper Methods
 	}
+	
+	[DataContract]
+	public class Result
+	{
+		[DataMember(Name = "adult")]
+		public bool Adult { get; set; }
+
+		[DataMember(Name = "backdrop_path")]
+		public string BackdropPath { get; set; }
+
+		[DataMember(Name = "id")]
+		public int Id { get; set; }
+
+		[DataMember(Name = "original_title")]
+		public string OriginalTitle { get; set; }
+
+		[DataMember(Name = "release_date")]
+		public string ReleaseDate { get; set; }
+
+		[DataMember(Name = "poster_path")]
+		public string PosterPath { get; set; }
+
+		[DataMember(Name = "popularity")]
+		public double Popularity { get; set; }
+
+		[DataMember(Name = "title")]
+		public string Title { get; set; }
+
+		[DataMember(Name = "vote_average")]
+		public double VoteAverage { get; set; }
+
+		[DataMember(Name = "vote_count")]
+		public int VoteCount { get; set; }
+	}
 
 	[DataContract]
-	public class Response
+	public class RootObject
 	{
-		[DataMember(Name = "title")]
-		public string OriginalTitle
-		{
-			get;
-			set;
-		}
+		[DataMember(Name = "page")]
+		public int Page { get; set; }
+
+		[DataMember(Name = "results")]
+		public List<Result> Results { get; set; }
+
+		[DataMember(Name = "total_pages")]
+		public int TotalPages { get; set; }
+
+		[DataMember(Name = "total_results")]
+		public int TotalResults { get; set; }
 	}
 }
