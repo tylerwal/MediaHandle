@@ -12,6 +12,7 @@ namespace MediaHandleConsole
 	{
 		/// <summary>
 		/// Extension method for strings that allow case insensitive 'contains'.
+		/// code found @ http://stackoverflow.com/questions/444798/case-insensitive-containsstring
 		/// </summary>
 		/// <param name="source"></param>
 		/// <param name="toCheck"></param>
