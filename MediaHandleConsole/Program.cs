@@ -8,6 +8,23 @@ using System.Runtime.Serialization.Json;
 
 namespace MediaHandleConsole
 {
+	static class StringExtensions
+	{
+		/// <summary>
+		/// Extension method for strings that allow case insensitive 'contains'.
+		/// </summary>
+		/// <param name="source"></param>
+		/// <param name="toCheck"></param>
+		/// <param name="comp"></param>
+		/// <returns></returns>
+		public static bool Contains(this string source, string toCheck, StringComparison comp)
+		{
+			return source.IndexOf(toCheck, comp) >= 0;
+		}
+	}
+
+
+
 	class Program
 	{
 		#region Fields
@@ -16,14 +33,21 @@ namespace MediaHandleConsole
 		private const string _theMovieDbApiKey = "f52f11edacfe8bbf8b9978ddbaf76526";
 		private const string _queryParameter = "&query=";
 
-		private List<string> _mediaFileExtensions = new List<string>
-					{
-						".mkv",
-						".avi",
-						".mpg",
-						".wmv",
-						".mp4"
-					};	
+		private static readonly List<string> _movieFileExtensions = new List<string>
+		{
+			".mkv",
+			".avi",
+			".mpg",
+			".wmv",
+			".mp4"
+		};
+
+		private static readonly List<string> _videoDisplayResolutions = new List<string>
+		{
+			"480p",
+			"720p",
+			"1080p"
+		};
 
 		#endregion Fields
 
@@ -31,58 +55,27 @@ namespace MediaHandleConsole
 		{
 			Program prog = new Program();
 
-			//prog.FindMovies();
+			List<FileInfo> allMovieFiles = prog.GetMovieFiles();
+
+			IEnumerable<FileInfo> sampleFiles = GetProbableSampleFiles(allMovieFiles);
+
+			IEnumerable<FileInfo> wantedMovieFiles = allMovieFiles.Except(sampleFiles);
 
 			prog.TestJson();
 		}
 
-		private void FindMovies()
+		private List<FileInfo> GetMovieFiles()
 		{
 			DirectoryInfo moviesDirectoryInfo = new DirectoryInfo(@"\\SERVER\Downloads\Movies\");
 
-			var fileSystemInfos = moviesDirectoryInfo.EnumerateFileSystemInfos("*", SearchOption.AllDirectories);
-
-			//var files = moviesDirectoryInfo.EnumerateFiles("*", SearchOption.AllDirectories);
-
-			var fileList = moviesDirectoryInfo.GetFiles("*", SearchOption.AllDirectories).ToList();
-
-			var matches =
-				from fileInfo in fileList
-				from mediaFileExtension in _mediaFileExtensions
-				where fileInfo.Name.Contains(mediaFileExtension)
-				select fileInfo;
-
-			var m = matches.Count();
-
-			var betterMatches = fileList
-				.Where(f =>
-				{
-					bool isMatch = false;
-
-					foreach (string mediaFileExtension in _mediaFileExtensions)
-					{
-						if (f.Name.Contains(mediaFileExtension))
-						{
-							isMatch = true;
-						}
-					}
-
-					return isMatch;
-				});
-
-			var bm = betterMatches.Count();
-
-			var optoMatches = fileList.Where(f => _mediaFileExtensions.Any(f.Name.Contains));
-
-			var om = optoMatches.Count();
-
-			var eventBetter = fileList.Where(f => _mediaFileExtensions.Any(f.Extension.Equals));
-
-			var eb = eventBetter.Count();
-
-			var mediaSystemFiles = fileSystemInfos.Where(i => i.Name.Contains(_mediaFileExtensions.First()));
+			IEnumerable<FileInfo> allFiles = moviesDirectoryInfo.GetFiles("*", SearchOption.AllDirectories);
 			
-			//var mediaFiles = files.Where(i => i.Name.Contains(_mediaFileExtensions.First()));
+			return allFiles.Where(f => _movieFileExtensions.Any(f.Extension.Equals)).ToList();
+		}
+
+		private static IEnumerable<FileInfo> GetProbableSampleFiles(IEnumerable<FileInfo> movieFiles)
+		{
+			return movieFiles.Where(f => f.Name.Contains("sample", StringComparison.OrdinalIgnoreCase)).Where(i => (i.Length / 1024 / 1024) < 50 );
 		}
 
 		private void TestJson()
