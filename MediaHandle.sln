@@ -5,15 +5,20 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleConsole", "MediaHandleConsole\MediaHandleConsole.csproj", "{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities\Utilities.csproj", "{5DD639E9-3322-45E4-8FF1-2C1746BD915A}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 3
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = MediaHandleConsole\\MediaHandleConsole.csproj
 		SccProjectName1 = MediaHandleConsole
 		SccLocalPath1 = MediaHandleConsole
+		SccProjectUniqueName2 = Utilities\\Utilities\\Utilities.csproj
+		SccProjectName2 = Utilities/Utilities
+		SccLocalPath2 = Utilities\\Utilities
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +29,10 @@ Global
 		{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD639E9-3322-45E4-8FF1-2C1746BD915A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD639E9-3322-45E4-8FF1-2C1746BD915A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD639E9-3322-45E4-8FF1-2C1746BD915A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD639E9-3322-45E4-8FF1-2C1746BD915A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

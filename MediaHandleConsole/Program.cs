@@ -5,30 +5,15 @@ using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using Utilities;
 
 namespace MediaHandleConsole
 {
-	static class StringExtensions
-	{
-		/// <summary>
-		/// Extension method for strings that allow case insensitive 'contains'.
-		/// code found @ http://stackoverflow.com/questions/444798/case-insensitive-containsstring
-		/// </summary>
-		/// <param name="source"></param>
-		/// <param name="toCheck"></param>
-		/// <param name="comp"></param>
-		/// <returns></returns>
-		public static bool Contains(this string source, string toCheck, StringComparison comp)
-		{
-			return source.IndexOf(toCheck, comp) >= 0;
-		}
-	}
-
-
-
 	class Program
 	{
 		#region Fields
+
+		private const string _filePath = @"D:\Movies\";
 
 		private const string _theMovieDbOrgUrl = "https://api.themoviedb.org";
 		private const string _theMovieDbApiKey = "f52f11edacfe8bbf8b9978ddbaf76526";
@@ -67,7 +52,7 @@ namespace MediaHandleConsole
 
 		private List<FileInfo> GetMovieFiles()
 		{
-			DirectoryInfo moviesDirectoryInfo = new DirectoryInfo(@"\\SERVER\Downloads\Movies\");
+			DirectoryInfo moviesDirectoryInfo = new DirectoryInfo(_filePath);
 
 			IEnumerable<FileInfo> allFiles = moviesDirectoryInfo.GetFiles("*", SearchOption.AllDirectories);
 			
