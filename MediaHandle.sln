@@ -1,29 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleConsole", "MediaHandleConsole\MediaHandleConsole.csproj", "{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities\Utilities.csproj", "{5DD639E9-3322-45E4-8FF1-2C1746BD915A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleUtilities", "MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj", "{73F0D388-A089-4C9D-8E3B-4098271E505D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieInfoRetrieval", "MovieInfoRetrieval\MovieInfoRetrieval\MovieInfoRetrieval.csproj", "{F3D043CF-5ED9-425E-B327-B807821A6AB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleDomain", "MediaHandleDomain\MediaHandleDomain\MediaHandleDomain.csproj", "{A43F69B2-B28D-4186-9A50-5BCCA2DA1390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessing", "MovieSearch\FileProcessing\FileProcessing.csproj", "{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = MediaHandleConsole\\MediaHandleConsole.csproj
 		SccProjectName1 = MediaHandleConsole
 		SccLocalPath1 = MediaHandleConsole
-		SccProjectUniqueName2 = Utilities\\Utilities\\Utilities.csproj
-		SccProjectName2 = Utilities/Utilities
-		SccLocalPath2 = Utilities\\Utilities
-		SccProjectUniqueName3 = MovieInfoRetrieval\\MovieInfoRetrieval\\MovieInfoRetrieval.csproj
-		SccProjectName3 = MovieInfoRetrieval/MovieInfoRetrieval
-		SccLocalPath3 = MovieInfoRetrieval\\MovieInfoRetrieval
+		SccProjectUniqueName2 = MediaHandleUtilities\\MediaHandleUtilities\\MediaHandleUtilities.csproj
+		SccProjectName2 = MediaHandleUtilities/MediaHandleUtilities
+		SccLocalPath2 = MediaHandleUtilities\\MediaHandleUtilities
+		SccProjectUniqueName3 = MediaHandleDomain\\MediaHandleDomain\\MediaHandleDomain.csproj
+		SccProjectName3 = MediaHandleDomain/MediaHandleDomain
+		SccLocalPath3 = MediaHandleDomain\\MediaHandleDomain
+		SccProjectUniqueName4 = MovieSearch\\FileProcessing\\FileProcessing.csproj
+		SccProjectName4 = MovieSearch/FileProcessing
+		SccLocalPath4 = MovieSearch\\FileProcessing
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,14 +39,18 @@ Global
 		{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DD639E9-3322-45E4-8FF1-2C1746BD915A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DD639E9-3322-45E4-8FF1-2C1746BD915A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DD639E9-3322-45E4-8FF1-2C1746BD915A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DD639E9-3322-45E4-8FF1-2C1746BD915A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3D043CF-5ED9-425E-B327-B807821A6AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3D043CF-5ED9-425E-B327-B807821A6AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3D043CF-5ED9-425E-B327-B807821A6AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3D043CF-5ED9-425E-B327-B807821A6AB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F0D388-A089-4C9D-8E3B-4098271E505D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F0D388-A089-4C9D-8E3B-4098271E505D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F0D388-A089-4C9D-8E3B-4098271E505D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F0D388-A089-4C9D-8E3B-4098271E505D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A43F69B2-B28D-4186-9A50-5BCCA2DA1390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A43F69B2-B28D-4186-9A50-5BCCA2DA1390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A43F69B2-B28D-4186-9A50-5BCCA2DA1390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A43F69B2-B28D-4186-9A50-5BCCA2DA1390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

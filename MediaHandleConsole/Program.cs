@@ -5,15 +5,13 @@ using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-using Utilities;
+using MediaHandleUtilities;
 
 namespace MediaHandleConsole
 {
 	class Program
 	{
 		#region Fields
-
-		private const string _filePath = @"D:\Movies\";
 
 		private const string _theMovieDbOrgUrl = "https://api.themoviedb.org";
 		private const string _theMovieDbApiKey = "f52f11edacfe8bbf8b9978ddbaf76526";
@@ -52,7 +50,7 @@ namespace MediaHandleConsole
 
 		private List<FileInfo> GetMovieFiles()
 		{
-			DirectoryInfo moviesDirectoryInfo = new DirectoryInfo(_filePath);
+			DirectoryInfo moviesDirectoryInfo = new DirectoryInfo(@"\\SERVER\Downloads\Movies\");
 
 			IEnumerable<FileInfo> allFiles = moviesDirectoryInfo.GetFiles("*", SearchOption.AllDirectories);
 			
