@@ -61,6 +61,10 @@
       <Project>{73f0d388-a089-4c9d-8e3b-4098271e505d}</Project>
       <Name>MediaHandleUtilities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MovieSearch\FileProcessing\FileProcessing.csproj">
+      <Project>{87fa7d4b-8e8e-4f3c-b4b7-51ff6ee61e32}</Project>
+      <Name>FileProcessing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

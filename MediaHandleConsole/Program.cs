@@ -1,5 +1,5 @@
-﻿using JsonProcessing;
-using MediaHandleUtilities;
+﻿using FileProcessing;
+using JsonProcessing;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +10,8 @@ namespace MediaHandleConsole
 	class Program
 	{
 		#region Fields
+
+		private const string _path = @"\\SERVER\Downloads\Movies\";
 		
 		private static readonly List<string> _movieFileExtensions = new List<string>
 		{
@@ -33,29 +35,15 @@ namespace MediaHandleConsole
 		{
 			Program prog = new Program();
 
-			List<FileInfo> allMovieFiles = prog.GetMovieFiles();
+			List<FileInfo> allMovieFiles = FileProcess.GetMovieFiles(_path);
 
-			IEnumerable<FileInfo> sampleFiles = GetProbableSampleFiles(allMovieFiles);
+			IEnumerable<FileInfo> sampleFiles = FileProcess.GetProbableSampleFiles(allMovieFiles);
 
 			IEnumerable<FileInfo> wantedMovieFiles = allMovieFiles.Except(sampleFiles);
 
 			prog.TestJson();
 		}
-
-		private List<FileInfo> GetMovieFiles()
-		{
-			DirectoryInfo moviesDirectoryInfo = new DirectoryInfo(@"\\SERVER\Downloads\Movies\");
-
-			IEnumerable<FileInfo> allFiles = moviesDirectoryInfo.GetFiles("*", SearchOption.AllDirectories);
-			
-			return allFiles.Where(f => _movieFileExtensions.Any(f.Extension.Equals)).ToList();
-		}
-
-		private static IEnumerable<FileInfo> GetProbableSampleFiles(IEnumerable<FileInfo> movieFiles)
-		{
-			return movieFiles.Where(f => f.Name.Contains("sample", StringComparison.OrdinalIgnoreCase)).Where(i => (i.Length / 1024 / 1024) < 50 );
-		}
-
+		
 		private void TestJson()
 		{
 			try

@@ -46,6 +46,12 @@
     <Compile Include="FileProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">
+      <Project>{73f0d388-a089-4c9d-8e3b-4098271e505d}</Project>
+      <Name>MediaHandleUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
