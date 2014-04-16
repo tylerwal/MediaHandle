@@ -47,6 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MediaHandleDomain\MediaHandleDomain\MediaHandleDomain.csproj">
+      <Project>{a43f69b2-b28d-4186-9a50-5bcca2da1390}</Project>
+      <Name>MediaHandleDomain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">
       <Project>{73f0d388-a089-4c9d-8e3b-4098271e505d}</Project>
       <Name>MediaHandleUtilities</Name>
