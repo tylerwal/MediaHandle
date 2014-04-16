@@ -1,4 +1,6 @@
-﻿using MediaHandleUtilities;
+﻿using MediaHandleDomain;
+
+using MediaHandleUtilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +23,7 @@ namespace FileProcessing
 
 		public static List<FileInfo> GetMovieFiles(string path)
 		{
-			
+			var names = Enum.GetNames(typeof(MediaFileExtensionLookupId));
 
 			DirectoryInfo moviesDirectoryInfo = new DirectoryInfo(path);
 
