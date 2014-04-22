@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleConsole", "MediaHandleConsole\MediaHandleConsole.csproj", "{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleDomain", "MediaH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessing", "MovieSearch\FileProcessing\FileProcessing.csproj", "{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonProcessing", "JsonProcessing\JsonProcessing.csproj", "{582222D1-7A30-4CAC-AC5D-936329253993}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleUtilities.Test", "MediaHandleUtilities.Test\MediaHandleUtilities.Test\MediaHandleUtilities.Test.csproj", "{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -31,9 +31,9 @@ Global
 		SccProjectUniqueName4 = MovieSearch\\FileProcessing\\FileProcessing.csproj
 		SccProjectName4 = MovieSearch/FileProcessing
 		SccLocalPath4 = MovieSearch\\FileProcessing
-		SccProjectUniqueName5 = JsonProcessing\\JsonProcessing.csproj
-		SccProjectName5 = JsonProcessing
-		SccLocalPath5 = JsonProcessing
+		SccProjectUniqueName5 = MediaHandleUtilities.Test\\MediaHandleUtilities.Test\\MediaHandleUtilities.Test.csproj
+		SccProjectName5 = MediaHandleUtilities.Test/MediaHandleUtilities.Test
+		SccLocalPath5 = MediaHandleUtilities.Test\\MediaHandleUtilities.Test
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,10 +56,10 @@ Global
 		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32}.Release|Any CPU.Build.0 = Release|Any CPU
-		{582222D1-7A30-4CAC-AC5D-936329253993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{582222D1-7A30-4CAC-AC5D-936329253993}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{582222D1-7A30-4CAC-AC5D-936329253993}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{582222D1-7A30-4CAC-AC5D-936329253993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
