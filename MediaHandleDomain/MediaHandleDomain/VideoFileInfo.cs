@@ -50,8 +50,8 @@ namespace MediaHandleDomain
 
 		public int VideoDisplayResolutionLookupId
 		{
-			get { return _mediaFileExtensionLookupId; }
-			set { _mediaFileExtensionLookupId = value; }
+			get { return _videoDisplayResolutionLookupId; }
+			set { _videoDisplayResolutionLookupId = value; }
 		}
 
 		#endregion Properties
