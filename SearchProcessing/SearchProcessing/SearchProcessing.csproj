@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{00FF18B8-4357-4791-865E-2518039824CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MediaHandleConsole</RootNamespace>
-    <AssemblyName>MediaHandleConsole</AssemblyName>
+    <RootNamespace>SearchProcessing</RootNamespace>
+    <AssemblyName>SearchProcessing</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -17,7 +17,6 @@
     <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,7 +26,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,29 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Constracts\IRequest.cs" />
+    <Compile Include="Constracts\IResult.cs" />
+    <Compile Include="Constracts\IRootObject.cs" />
+    <Compile Include="QueryConstants.cs" />
+    <Compile Include="RequestProcess.cs" />
+    <Compile Include="TheMovieDb\TheMovieDbRequest.cs" />
+    <Compile Include="TheMovieDb\TheMovieDbResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MediaHandleDomain\MediaHandleDomain\MediaHandleDomain.csproj">
-      <Project>{a43f69b2-b28d-4186-9a50-5bcca2da1390}</Project>
-      <Name>MediaHandleDomain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">
-      <Project>{73f0d388-a089-4c9d-8e3b-4098271e505d}</Project>
-      <Name>MediaHandleUtilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MovieSearch\FileProcessing\FileProcessing.csproj">
-      <Project>{87fa7d4b-8e8e-4f3c-b4b7-51ff6ee61e32}</Project>
-      <Name>FileProcessing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SearchProcessing\SearchProcessing\SearchProcessing.csproj">
-      <Project>{00ff18b8-4357-4791-865e-2518039824cc}</Project>
-      <Name>SearchProcessing</Name>
-    </ProjectReference>
+    <Compile Include="TheMovieDb\TheMovieDbRootResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

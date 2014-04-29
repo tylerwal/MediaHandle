@@ -13,9 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessing", "MovieSear
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleUtilities.Test", "MediaHandleUtilities.Test\MediaHandleUtilities.Test\MediaHandleUtilities.Test.csproj", "{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchProcessing", "SearchProcessing\SearchProcessing\SearchProcessing.csproj", "{00FF18B8-4357-4791-865E-2518039824CC}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -34,6 +36,9 @@ Global
 		SccProjectUniqueName5 = MediaHandleUtilities.Test\\MediaHandleUtilities.Test\\MediaHandleUtilities.Test.csproj
 		SccProjectName5 = MediaHandleUtilities.Test/MediaHandleUtilities.Test
 		SccLocalPath5 = MediaHandleUtilities.Test\\MediaHandleUtilities.Test
+		SccProjectUniqueName6 = SearchProcessing\\SearchProcessing\\SearchProcessing.csproj
+		SccProjectName6 = SearchProcessing/SearchProcessing
+		SccLocalPath6 = SearchProcessing\\SearchProcessing
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +65,10 @@ Global
 		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00FF18B8-4357-4791-865E-2518039824CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00FF18B8-4357-4791-865E-2518039824CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00FF18B8-4357-4791-865E-2518039824CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00FF18B8-4357-4791-865E-2518039824CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
