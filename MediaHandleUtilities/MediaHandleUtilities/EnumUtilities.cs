@@ -7,6 +7,11 @@ namespace MediaHandleUtilities
 {
 	public static class EnumUtilities
 	{
+		public static IEnumerable<TEnum> GetEnumValueList<TEnum>()
+		{
+			return Enum.GetValues(typeof(TEnum)).OfType<TEnum>();
+		}
+
 		public static List<string> GetStringValues(Type enumWithStringValues)
 		{
 			IEnumerable<Enum> enums = Enum.GetValues(enumWithStringValues).OfType<Enum>();

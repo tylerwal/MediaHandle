@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MediaHandleDomain
 {
-	public class VideoFileInfo
+	public class VideoFile
 	{
 		#region Fields
 
@@ -21,11 +21,22 @@ namespace MediaHandleDomain
 
 		#region Constructor
 
-		public VideoFileInfo()
+		public VideoFile()
 		{
 		}
 
-		public VideoFileInfo(FileInfo fileInfo, int mediaFileExtensionLookupId, int videoDisplayResolutionLookupId)
+		public VideoFile(FileInfo fileInfo)
+		{
+			_fileInfo = fileInfo;
+		}
+
+		public VideoFile(FileInfo fileInfo, int mediaFileExtensionLookupId)
+		{
+			_fileInfo = fileInfo;
+			_mediaFileExtensionLookupId = mediaFileExtensionLookupId;
+		}
+
+		public VideoFile(FileInfo fileInfo, int mediaFileExtensionLookupId, int videoDisplayResolutionLookupId)
 		{
 			_fileInfo = fileInfo;
 			_mediaFileExtensionLookupId = mediaFileExtensionLookupId;

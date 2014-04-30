@@ -15,9 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleUtilities.Test",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchProcessing", "SearchProcessing\SearchProcessing\SearchProcessing.csproj", "{00FF18B8-4357-4791-865E-2518039824CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessing.Test", "FileProcessing.Test\FileProcessing.Test\FileProcessing.Test.csproj", "{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 8
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -39,6 +41,9 @@ Global
 		SccProjectUniqueName6 = SearchProcessing\\SearchProcessing\\SearchProcessing.csproj
 		SccProjectName6 = SearchProcessing/SearchProcessing
 		SccLocalPath6 = SearchProcessing\\SearchProcessing
+		SccProjectUniqueName7 = FileProcessing.Test\\FileProcessing.Test\\FileProcessing.Test.csproj
+		SccProjectName7 = FileProcessing.Test/FileProcessing.Test
+		SccLocalPath7 = FileProcessing.Test\\FileProcessing.Test
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +74,10 @@ Global
 		{00FF18B8-4357-4791-865E-2518039824CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00FF18B8-4357-4791-865E-2518039824CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00FF18B8-4357-4791-865E-2518039824CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
