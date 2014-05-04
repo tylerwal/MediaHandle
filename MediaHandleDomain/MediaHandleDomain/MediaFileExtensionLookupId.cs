@@ -2,7 +2,6 @@
 
 namespace MediaHandleDomain
 {
-	[StringEnumClass]
 	public enum MediaFileExtensionLookupId
 	{
 		[StringValue("None")]

@@ -1,7 +1,5 @@
 ﻿using FileProcessing;
-
 using MediaHandleDomain;
-
 using SearchProcessing;
 using SearchProcessing.Constracts;
 using SearchProcessing.TheMovieDb;
@@ -16,13 +14,9 @@ namespace MediaHandleConsole
 	{
 		static void Main(string[] args)
 		{
-			FileProcess fileProcess = new FileProcess(@"\\SERVER\Downloads\Movies\");
+			FileProcess fileProcess = new FileProcess(@"C:\Users\Tyler\Downloads\");
 
-			List<FileInfo> allMovieFiles = fileProcess.GetFilesWithMatchingExtensions();
-
-			IEnumerable<FileInfo> sampleFiles = FileProcess.GetProbableSampleFiles(allMovieFiles);
-
-			IEnumerable<FileInfo> wantedMovieFiles = allMovieFiles.Except(sampleFiles);
+			//FileProcess fileProcess = new FileProcess(@"\\SERVER\Downloads\Movies\");
 
 			List<VideoFile> test = fileProcess.GetVideoFiles();
 			

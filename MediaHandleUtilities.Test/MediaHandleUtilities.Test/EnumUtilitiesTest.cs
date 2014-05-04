@@ -9,7 +9,7 @@ namespace MediaHandleUtilities.Test
 		[TestMethod]
 		public void GetStringValuesTest()
 		{
-			List<string> actualList = EnumUtilities.GetStringValues(typeof(VideoDisplayResolutionLookupId));
+			List<string> actualList = EnumUtilities.GetStringValues<VideoDisplayResolutionLookupId>();
 
 			List<string> expectedList = new List<string>
 			{
@@ -30,7 +30,7 @@ namespace MediaHandleUtilities.Test
 		[TestMethod]
 		public void GetStringValuesExceptNoneTest()
 		{
-			List<string> actualList = EnumUtilities.GetStringValuesExceptNone(typeof(VideoDisplayResolutionLookupId));
+			List<string> actualList = EnumUtilities.GetStringValuesExceptNone<VideoDisplayResolutionLookupId>();
 
 			List<string> expectedList = new List<string>
 			{

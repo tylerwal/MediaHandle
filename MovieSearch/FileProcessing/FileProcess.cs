@@ -1,13 +1,10 @@
-﻿using System.Collections;
-
-using MediaHandleDomain;
+﻿using MediaHandleDomain;
 using MediaHandleUtilities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileProcessing
 {
@@ -29,9 +26,9 @@ namespace FileProcessing
 		{
 			_directoryPath = directoryPath;
 
-			_movieFileExtensions = EnumUtilities.GetStringValuesExceptNone(typeof(MediaFileExtensionLookupId));
+			_movieFileExtensions = EnumUtilities.GetStringValuesExceptNone<MediaFileExtensionLookupId>();
 
-			_videoDisplayResolutions = EnumUtilities.GetStringValuesExceptNone(typeof(VideoDisplayResolutionLookupId));
+			_videoDisplayResolutions = EnumUtilities.GetStringValuesExceptNone<MediaFileExtensionLookupId>();
 		}
 
 		#endregion Constructor
@@ -53,9 +50,7 @@ namespace FileProcessing
 			
 			foreach (FileInfo videoFileInfo in videoFileInfos)
 			{
-				VideoFile videoFile = new VideoFile(videoFileInfo);
-
-				videoFile.MediaFileExtensionLookupId = GetMatchingMediaFileExtension(videoFileInfo.Extension);
+				videoFiles.Add(ProcessFileInfo(videoFileInfo));
 			}
 
 			return videoFiles;
@@ -83,11 +78,11 @@ namespace FileProcessing
 
 		public static int GetMatchingMediaFileExtension(string extension)
 		{
-			var mediaFileExtensions = EnumUtilities.GetEnumValueList<MediaFileExtensionLookupId>();
+			var extensionEnums = EnumUtilities.GetEnumValueList<MediaFileExtensionLookupId>();
 			
 			// now compare the extension to the StringValue of all the extensions; StringValue is key here
 			// enum default value is the first element; which is 'None'
-			MediaFileExtensionLookupId matchingEnum = mediaFileExtensions
+			MediaFileExtensionLookupId matchingEnum = extensionEnums
 				.FirstOrDefault(
 					i => EnumUtilities
 						.GetStringValue(i)
@@ -95,6 +90,31 @@ namespace FileProcessing
 				);
 
 			return (int)matchingEnum;
+		}
+
+		private VideoFile ProcessFileInfo(FileInfo fileInfo)
+		{
+			VideoFile videoFile = new VideoFile(fileInfo);
+
+			// add type of file
+			videoFile.MediaFileExtensionLookupId = GetMatchingMediaFileExtension(fileInfo.Extension);
+
+			// keep track of file name; adjust after processing portions
+			string fileName = fileInfo.Name;
+
+			string resolution = _videoDisplayResolutions.FirstOrDefault(fileName.Contains);
+
+			var resolutionEnums = EnumUtilities.GetEnumValueList<VideoDisplayResolutionLookupId>();
+
+			if (resolution != null)
+			{
+				VideoDisplayResolutionLookupId matchingDisplayId = resolutionEnums
+					.FirstOrDefault(
+						i => EnumUtilities
+					);
+			}
+
+			return videoFile;
 		}
 
 		#endregion Helper Methods

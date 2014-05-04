@@ -12,16 +12,16 @@ namespace MediaHandleUtilities
 			return Enum.GetValues(typeof(TEnum)).OfType<TEnum>();
 		}
 
-		public static List<string> GetStringValues(Type enumWithStringValues)
+		public static List<string> GetStringValues<TEnum>()
 		{
-			IEnumerable<Enum> enums = Enum.GetValues(enumWithStringValues).OfType<Enum>();
+			IEnumerable<Enum> enums = Enum.GetValues(typeof(TEnum)).OfType<Enum>();
 
 			return enums.Select(GetStringValue).ToList();
 		}
-
-		public static List<string> GetStringValuesExceptNone(Type enumWithStringValues)
+		
+		public static List<string> GetStringValuesExceptNone<TEnum>()
 		{
-			return GetStringValues(enumWithStringValues).Where(i => i != "None").ToList();
+			return GetStringValues<TEnum>().Where(i => i != "None").ToList();
 		}
 
 		public static string GetStringValue(Enum value)
