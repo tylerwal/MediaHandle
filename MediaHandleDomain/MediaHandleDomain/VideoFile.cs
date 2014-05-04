@@ -17,6 +17,8 @@ namespace MediaHandleDomain
 
 		private int _videoDisplayResolutionLookupId;
 
+		private int _year;
+
 		#endregion Fields
 
 		#region Constructor
@@ -63,6 +65,12 @@ namespace MediaHandleDomain
 		{
 			get { return _videoDisplayResolutionLookupId; }
 			set { _videoDisplayResolutionLookupId = value; }
+		}
+
+		public int Year
+		{
+			get { return _year;  }
+			set { _year = value; }
 		}
 
 		#endregion Properties

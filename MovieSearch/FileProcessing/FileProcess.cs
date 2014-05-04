@@ -96,22 +96,26 @@ namespace FileProcessing
 		{
 			VideoFile videoFile = new VideoFile(fileInfo);
 
-			// add type of file
+			// *********** Extension ***********
 			videoFile.MediaFileExtensionLookupId = GetMatchingMediaFileExtension(fileInfo.Extension);
 
 			// keep track of file name; adjust after processing portions
 			string fileName = fileInfo.Name;
 
-			string resolution = _videoDisplayResolutions.FirstOrDefault(fileName.Contains);
-
+			// *********** Video Resolution ***********
 			var resolutionEnums = EnumUtilities.GetEnumValueList<VideoDisplayResolutionLookupId>();
-
-			if (resolution != null)
-			{
-				VideoDisplayResolutionLookupId matchingDisplayId = resolutionEnums
+			
+			VideoDisplayResolutionLookupId matchingDisplayId = resolutionEnums
 					.FirstOrDefault(
-						i => EnumUtilities
+						i => fileName.Contains
+							(
+								EnumUtilities.GetStringValue(i), StringComparison.InvariantCultureIgnoreCase
+							)
 					);
+
+			if (matchingDisplayId != VideoDisplayResolutionLookupId.None)
+			{
+				fileName = fileName.Replace(EnumUtilities.GetStringValue(matchingDisplayId), string.Empty);
 			}
 
 			return videoFile;
