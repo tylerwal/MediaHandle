@@ -14,9 +14,9 @@ namespace MediaHandleConsole
 	{
 		static void Main(string[] args)
 		{
-			FileProcess fileProcess = new FileProcess(@"C:\Users\Tyler\Downloads\");
+			//FileProcess fileProcess = new FileProcess(@"C:\Users\Tyler\Downloads\");
 
-			//FileProcess fileProcess = new FileProcess(@"\\SERVER\Downloads\Movies\");
+			FileProcess fileProcess = new FileProcess(@"\\SERVER\Downloads\Movies\");
 
 			List<VideoFile> test = fileProcess.GetVideoFiles();
 			

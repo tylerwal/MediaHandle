@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.IO;
 namespace MediaHandleDomain
 {
 	public class VideoFile
@@ -18,6 +12,8 @@ namespace MediaHandleDomain
 		private int _videoDisplayResolutionLookupId;
 
 		private int _year;
+
+		private string _name;
 
 		#endregion Fields
 
@@ -71,6 +67,12 @@ namespace MediaHandleDomain
 		{
 			get { return _year;  }
 			set { _year = value; }
+		}
+
+		public string Name
+		{
+			get { return _name; }
+			set { _name = value; }
 		}
 
 		#endregion Properties
