@@ -39,7 +39,10 @@ namespace FileProcessing
 				"x264",
 				"XVID",
 				"AC3",
-				"DVDScr"
+				"DVDScr",
+				"UNRATED",
+				"DvDrip",
+				"EXTENDED"
 			};
 		}
 
@@ -138,16 +141,22 @@ namespace FileProcessing
 			// *********** Year ***********
 			Regex yearRegex = new Regex(@"\d{4}");
 
-			Match yearMatch = yearRegex.Match(fileName);
+			MatchCollection yearMatches = yearRegex.Matches(fileName);
 
-			if (yearMatch.Success)
+			// only looks for years within the range of 1900 to 2050
+			int? yearWithinRange = yearMatches
+				.Cast<Match>()
+				.Select(i => int.Parse(i.Value))
+				.Cast<int?>()
+				.FirstOrDefault(y => y > 1900 && y < 2050);
+
+			if (yearWithinRange.HasValue)
 			{
-				// guaranteed to be an int because of the regex match
-				videoFile.Year = int.Parse(yearMatch.Value);
+				videoFile.Year = yearWithinRange.Value;
 
-				fileName = fileName.Replace(videoFile.Year.ToString(), string.Empty);
+				fileName = fileName.Replace(yearWithinRange.ToString(), string.Empty);
 			}
-
+			
 			// *********** Remove garbage words ***********
 			foreach (string word in _commonWordsToRemove)
 			{
@@ -156,10 +165,23 @@ namespace FileProcessing
 
 			// *********** Clean up remaining string ***********
 
-			// get text that comes after 2 periods
-			Regex garbageRegex = new Regex(@"\.{2,}[\w\.\-]+");
+			// get rid of empty parentheses
+			fileName = fileName.Replace(@"()", string.Empty);
 
-			fileName = garbageRegex.Replace(fileName, string.Empty);
+			// get rid of things remaining in square brackets
+			Regex bracketRegex = new Regex(@"\[.*?\]");
+
+			fileName = bracketRegex.Replace(fileName, string.Empty);
+
+			// common tag by a group
+			Regex groupRegex = new Regex(@"-\w+$");
+
+			fileName = groupRegex.Replace(fileName, string.Empty);
+
+			// get text that comes after 2 periods
+			Regex endJunk = new Regex(@"[\.\s]{2,}.*");
+
+			fileName = endJunk.Replace(fileName, string.Empty);
 
 			// *********** Convert periods to spaces ***********
 

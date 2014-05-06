@@ -11,7 +11,7 @@ namespace MediaHandleDomain
 
 		private int _videoDisplayResolutionLookupId;
 
-		private int _year;
+		private int? _year;
 
 		private string _name;
 
@@ -63,7 +63,7 @@ namespace MediaHandleDomain
 			set { _videoDisplayResolutionLookupId = value; }
 		}
 
-		public int Year
+		public int? Year
 		{
 			get { return _year;  }
 			set { _year = value; }

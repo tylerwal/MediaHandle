@@ -5,8 +5,6 @@ using SearchProcessing.Constracts;
 using SearchProcessing.TheMovieDb;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace MediaHandleConsole
 {
@@ -16,7 +14,9 @@ namespace MediaHandleConsole
 		{
 			//FileProcess fileProcess = new FileProcess(@"C:\Users\Tyler\Downloads\");
 
-			FileProcess fileProcess = new FileProcess(@"\\SERVER\Downloads\Movies\");
+			//FileProcess fileProcess = new FileProcess(@"\\SERVER\Downloads\Movies\");
+
+			FileProcess fileProcess = new FileProcess(@"Z:\Sort\");
 
 			List<VideoFile> test = fileProcess.GetVideoFiles();
 			
