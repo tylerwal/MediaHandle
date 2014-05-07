@@ -2,6 +2,6 @@
 {
 	public interface IRequest
 	{
-		string CreateRequest(string queryString);
+		string CreateSearchQuery(string queryString);
 	}
 }

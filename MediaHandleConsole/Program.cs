@@ -1,4 +1,6 @@
-﻿using FileProcessing;
+﻿using System.Linq;
+
+using FileProcessing;
 using MediaHandleDomain;
 using SearchProcessing;
 using SearchProcessing.Constracts;
@@ -18,27 +20,31 @@ namespace MediaHandleConsole
 
 			FileProcess fileProcess = new FileProcess(@"Z:\Sort\");
 
-			List<VideoFile> test = fileProcess.GetVideoFiles();
-			
-			TestJson();
-		}
-		
-		private static void TestJson()
-		{
+			List<VideoFile> videoFiles = fileProcess.GetVideoFiles();
+
 			IRequest movieDbRequest = new TheMovieDbRequest();
-
-			try
+			
+			foreach (VideoFile videoFile in videoFiles)
 			{
-				string searchRequest = movieDbRequest.CreateRequest("The Matrix Revisited");
+				try
+				{
+					string searchRequest = movieDbRequest.CreateSearchQuery(videoFile.Name);
 
-				TheMovieDbRootResult searchResponse = RequestProcess.MakeRequest<TheMovieDbRootResult, TheMovieDbResult>(searchRequest);
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-				Console.Read();
+					TheMovieDbRootResult searchResponse = RequestProcess.MakeRequest<TheMovieDbRootResult, TheMovieDbResult>(searchRequest);
+
+					TheMovieDbResult matchedMovie = searchResponse.Results.FirstOrDefault();
+
+					if (matchedMovie != null)
+					{
+						string title = matchedMovie.Title;
+					}
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+					Console.Read();
+				}
 			}
 		}
-
 	}
 }

@@ -4,7 +4,7 @@ namespace SearchProcessing.TheMovieDb
 {
 	public class TheMovieDbRequest : IRequest
 	{
-		public string CreateRequest(string queryString)
+		public string CreateSearchQuery(string queryString)
 		{
 			string urlRequest = QueryConstants._theMovieDbOrgUrl +
 							"/3/search/movie" +
