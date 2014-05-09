@@ -6,6 +6,8 @@ namespace SearchProcessing.TheMovieDb
 	[DataContract]
 	public class TheMovieDbResult : IResult
 	{
+		#region Properties
+
 		[DataMember(Name = "adult")]
 		public bool Adult { get; set; }
 
@@ -35,5 +37,21 @@ namespace SearchProcessing.TheMovieDb
 
 		[DataMember(Name = "vote_count")]
 		public int VoteCount { get; set; }
+
+		#endregion Properties
+
+		#region Methods
+
+		/// <summary>
+		/// Creates the hyperlink of a poster image.
+		/// </summary>
+		/// <param name="posterPath">The PosterPath that is returned with the query result.</param>
+		/// <returns>The complete hyperlink.</returns>
+		public static string CreatePosterHyperlink(string posterPath)
+		{
+			return "http://image.tmdb.org/t/p/w500" + posterPath;
+		}
+
+		#endregion Methods
 	}
 }

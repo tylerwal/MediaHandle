@@ -1,12 +1,11 @@
-﻿using System.Linq;
-
-using FileProcessing;
+﻿using FileProcessing;
 using MediaHandleDomain;
 using SearchProcessing;
 using SearchProcessing.Constracts;
 using SearchProcessing.TheMovieDb;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MediaHandleConsole
 {
@@ -37,6 +36,8 @@ namespace MediaHandleConsole
 					if (matchedMovie != null)
 					{
 						string title = matchedMovie.Title;
+
+						string path = TheMovieDbResult.CreatePosterHyperlink(matchedMovie.PosterPath);
 					}
 				}
 				catch (Exception e)
