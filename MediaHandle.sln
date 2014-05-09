@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchProcessing", "SearchP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessing.Test", "FileProcessing.Test\FileProcessing.Test\FileProcessing.Test.csproj", "{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DDEA22B9-E91E-4FC2-9DF6-E27A9478388F}"
+	ProjectSection(SolutionItems) = preProject
+		CookComputing.XmlRpcV2.dll = CookComputing.XmlRpcV2.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 8
