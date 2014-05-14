@@ -50,6 +50,7 @@
     <Compile Include="Constracts\IRequest.cs" />
     <Compile Include="Constracts\IResult.cs" />
     <Compile Include="Constracts\IRootObject.cs" />
+    <Compile Include="OpenSubtitles\IOpenSubtitlesProxy.cs" />
     <Compile Include="OpenSubtitles\OpenSubtitlesRequest.cs" />
     <Compile Include="QueryConstants.cs" />
     <Compile Include="RequestProcess.cs" />

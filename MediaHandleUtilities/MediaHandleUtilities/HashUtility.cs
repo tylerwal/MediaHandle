@@ -26,7 +26,7 @@ namespace MediaHandleUtilities
 			byte[] buffer = new byte[sizeof(long)];
 
 			while (
-					(iteration < (65536 / sizeof(long))) && 
+					(iteration < (65536 / sizeof(long))) &&
 					(input.Read(buffer, 0, sizeof(long)) > 0)
 				)
 			{
@@ -38,7 +38,7 @@ namespace MediaHandleUtilities
 
 			iteration = 0;
 			while (
-					(iteration < (65536 / sizeof(long))) && 
+					(iteration < (65536 / sizeof(long))) &&
 					(input.Read(buffer, 0, sizeof(long)) > 0)
 				)
 			{
