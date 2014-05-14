@@ -9,6 +9,11 @@ namespace MediaHandleUtilities.Test
 		[TestMethod]
 		public void ComputeMovieHashTest()
 		{
+			var actualHash = HashUtility.ComputeMovieHash(@"C:\Programming\Media Handle\MediaHandle\MediaHandleUtilities.Test\dummy.rar");
+
+			var actualHashHex = HashUtility.ToHexadecimal(actualHash);
+
+
 		}
 	}
 }

@@ -20,7 +20,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DDEA22B9-E91E-4FC2-9DF6-E27A9478388F}"
 	ProjectSection(SolutionItems) = preProject
 		CookComputing.XmlRpcV2.dll = CookComputing.XmlRpcV2.dll
-		MediaHandleUtilities.Test\dummy.rar = MediaHandleUtilities.Test\dummy.rar
 	EndProjectSection
 EndProject
 Global

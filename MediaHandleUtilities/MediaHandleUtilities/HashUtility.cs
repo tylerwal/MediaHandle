@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MediaHandleUtilities
 {
-	public class HashUtility
+	public static class HashUtility
 	{
 		public static IEnumerable<byte> ComputeMovieHash(string filename)
 		{
@@ -22,39 +22,28 @@ namespace MediaHandleUtilities
 			long streamsize = input.Length;
 			long lhash = streamsize;
 
-			long iteration = 0;
+			long i = 0;
 			byte[] buffer = new byte[sizeof(long)];
-
-			while (
-					(iteration < (65536 / sizeof(long))) &&
-					(input.Read(buffer, 0, sizeof(long)) > 0)
-				)
+			while (i < 65536 / sizeof(long) && (input.Read(buffer, 0, sizeof(long)) > 0))
 			{
-				iteration++;
+				i++;
 				lhash += BitConverter.ToInt64(buffer, 0);
 			}
 
 			input.Position = Math.Max(0, streamsize - 65536);
-
-			iteration = 0;
-			while (
-					(iteration < (65536 / sizeof(long))) &&
-					(input.Read(buffer, 0, sizeof(long)) > 0)
-				)
+			i = 0;
+			while (i < 65536 / sizeof(long) && (input.Read(buffer, 0, sizeof(long)) > 0))
 			{
-				iteration++;
+				i++;
 				lhash += BitConverter.ToInt64(buffer, 0);
 			}
-
 			input.Close();
-
 			byte[] result = BitConverter.GetBytes(lhash);
-
 			Array.Reverse(result);
 			return result;
 		}
 
-		private static string ToHexadecimal(IEnumerable<byte> bytes)
+		public static string ToHexadecimal(IEnumerable<byte> bytes)
 		{
 			StringBuilder hexBuilder = new StringBuilder();
 
