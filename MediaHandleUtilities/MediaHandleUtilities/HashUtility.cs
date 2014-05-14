@@ -5,16 +5,19 @@ using System.Text;
 
 namespace MediaHandleUtilities
 {
+	/// <summary>
+	/// Source code taken from: http://trac.opensubtitles.org/projects/opensubtitles/wiki/HashSourceCodes
+	/// </summary>
 	public static class HashUtility
 	{
-		public static IEnumerable<byte> ComputeMovieHash(string filename)
+		public static string ComputeMovieHash(string filename)
 		{
 			byte[] result;
 			using (Stream input = File.OpenRead(filename))
 			{
 				result = ComputeMovieHash(input);
 			}
-			return result;
+			return ToHexadecimal(result);
 		}
 
 		private static byte[] ComputeMovieHash(Stream input)
@@ -43,7 +46,7 @@ namespace MediaHandleUtilities
 			return result;
 		}
 
-		public static string ToHexadecimal(IEnumerable<byte> bytes)
+		private static string ToHexadecimal(IEnumerable<byte> bytes)
 		{
 			StringBuilder hexBuilder = new StringBuilder();
 
@@ -52,14 +55,8 @@ namespace MediaHandleUtilities
 				hexBuilder.Append(b.ToString("x2"));
 			}
 
-			return hexBuilder.ToString();
+			return hexBuilder.ToString().ToUpper();
 		}
-
-		/*static void Main(string[] args)
-		{
-			IEnumerable<byte> moviehash = ComputeMovieHash(@"C:\test.avi");
-			Console.WriteLine("The hash of the movie-file is: {0}", ToHexadecimal(moviehash));
-		}*/
 	}
 
 }

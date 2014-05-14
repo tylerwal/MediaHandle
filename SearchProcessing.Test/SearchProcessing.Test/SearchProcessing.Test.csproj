@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C3DDE97A-9AB7-4469-8F59-3DBC5A518401}</ProjectGuid>
+    <ProjectGuid>{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MediaHandleUtilities.Test</RootNamespace>
-    <AssemblyName>MediaHandleUtilities.Test</AssemblyName>
+    <RootNamespace>SearchProcessing.Test</RootNamespace>
+    <AssemblyName>SearchProcessing.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2">
+      <HintPath>..\..\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -54,25 +57,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EnumUtilitiesTest.cs" />
-    <Compile Include="HashUtilityTest.cs" />
+    <Compile Include="OpenSubtitles\OpenSubtitlesProxyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">
-      <Project>{73f0d388-a089-4c9d-8e3b-4098271e505d}</Project>
-      <Name>MediaHandleUtilities</Name>
+    <ProjectReference Include="..\..\SearchProcessing\SearchProcessing\SearchProcessing.csproj">
+      <Project>{00ff18b8-4357-4791-865e-2518039824cc}</Project>
+      <Name>SearchProcessing</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="HashUtilityTestItems\dummy.rar">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="HashUtilityTestItems\breakdance.avi">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
