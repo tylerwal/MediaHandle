@@ -50,14 +50,30 @@
     <Compile Include="Constracts\IRequest.cs" />
     <Compile Include="Constracts\IResult.cs" />
     <Compile Include="Constracts\IRootObject.cs" />
+    <Compile Include="OpenSubtitles\Domain\BasicReturn.cs" />
+    <Compile Include="OpenSubtitles\Domain\ServerInfo.cs" />
+    <Compile Include="OpenSubtitles\Domain\Token.cs" />
     <Compile Include="OpenSubtitles\IOpenSubtitlesProxy.cs" />
+    <Compile Include="OpenSubtitles\OpenSubtitles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>OpenSubtitles.settings</DependentUpon>
+    </Compile>
     <Compile Include="OpenSubtitles\OpenSubtitlesRequest.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="QueryConstants.cs" />
     <Compile Include="RequestProcess.cs" />
     <Compile Include="TheMovieDb\TheMovieDbRequest.cs" />
     <Compile Include="TheMovieDb\TheMovieDbResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheMovieDb\TheMovieDbRootResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="OpenSubtitles\OpenSubtitles.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>OpenSubtitles.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
