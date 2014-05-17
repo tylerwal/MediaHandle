@@ -13,11 +13,11 @@ namespace SearchProcessing.OpenSubtitles {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
-    internal sealed partial class OpenSubtitles : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class OpenSubtitlesSettings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static OpenSubtitles defaultInstance = ((OpenSubtitles)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new OpenSubtitles())));
+        private static OpenSubtitlesSettings defaultInstance = ((OpenSubtitlesSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new OpenSubtitlesSettings())));
         
-        public static OpenSubtitles Default {
+        public static OpenSubtitlesSettings Default {
             get {
                 return defaultInstance;
             }

@@ -54,10 +54,10 @@
     <Compile Include="OpenSubtitles\Domain\ServerInfo.cs" />
     <Compile Include="OpenSubtitles\Domain\Token.cs" />
     <Compile Include="OpenSubtitles\IOpenSubtitlesProxy.cs" />
-    <Compile Include="OpenSubtitles\OpenSubtitles.Designer.cs">
+    <Compile Include="OpenSubtitles\OpenSubtitlesSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>OpenSubtitles.settings</DependentUpon>
+      <DependentUpon>OpenSubtitlesSettings.settings</DependentUpon>
     </Compile>
     <Compile Include="OpenSubtitles\OpenSubtitlesRequest.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -70,9 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="OpenSubtitles\OpenSubtitles.settings">
+    <None Include="OpenSubtitles\OpenSubtitlesSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>OpenSubtitles.Designer.cs</LastGenOutput>
+      <LastGenOutput>OpenSubtitlesSettings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
