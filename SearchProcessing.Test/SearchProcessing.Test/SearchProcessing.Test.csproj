@@ -58,11 +58,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\..\SearchProcessing\SearchProcessing\OpenSubtitles\OpenSubtitlesSettings.Designer.cs">
-      <Link>OpenSubtitles\OpenSubtitlesSettings.Designer.cs</Link>
-    </Compile>
     <Compile Include="OpenSubtitles\OpenSubtitlesProxyTest.cs" />
-    <Compile Include="OpenSubtitles\OpenSubtitlesSettingsTest.cs" />
+    <Compile Include="SettingsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,11 +67,6 @@
       <Project>{00ff18b8-4357-4791-865e-2518039824cc}</Project>
       <Name>SearchProcessing</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\SearchProcessing\SearchProcessing\OpenSubtitles\OpenSubtitlesSettings.settings">
-      <Link>OpenSubtitles\OpenSubtitlesSettings.settings</Link>
-    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

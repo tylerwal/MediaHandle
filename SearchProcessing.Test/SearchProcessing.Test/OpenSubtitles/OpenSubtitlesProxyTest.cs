@@ -11,7 +11,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 		/// <summary>
 		/// Test to make sure the XMLRPC connection is working with the most basic method on OpenSubtitles: ServerInfo()
 		/// 
-		/// ServerInfo() does not require a login; this test checks a few returned values that aren't expected to change.
+		/// ServerInfo() does not require a login;
 		/// </summary>
 		[TestMethod]
 		public void ServerInfoTest()
