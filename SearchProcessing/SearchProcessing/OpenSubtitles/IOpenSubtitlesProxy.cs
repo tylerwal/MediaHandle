@@ -9,5 +9,8 @@ namespace SearchProcessing.OpenSubtitles
 	{
 		[XmlRpcMethod("ServerInfo")]
 		ServerInfo ServiceInfo();
+
+		[XmlRpcMethod("LogIn")]
+		LogInResponse LogIn(string username, string password, string language, string userAgent);
 	}
 }

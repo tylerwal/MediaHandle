@@ -19,7 +19,7 @@ namespace MediaHandleConsole
 
 			FileProcess fileProcess = new FileProcess(@"Z:\Sort\");
 
-			List<VideoFile> videoFiles = fileProcess.GetVideoFiles();
+			IEnumerable<VideoFile> videoFiles = fileProcess.GetVideoFiles();
 
 			IRequest movieDbRequest = new TheMovieDbRequest();
 			
@@ -36,6 +36,8 @@ namespace MediaHandleConsole
 					if (matchedMovie != null)
 					{
 						string title = matchedMovie.Title;
+
+						Console.WriteLine(title);
 
 						string path = TheMovieDbResult.CreatePosterHyperlink(matchedMovie.PosterPath);
 					}

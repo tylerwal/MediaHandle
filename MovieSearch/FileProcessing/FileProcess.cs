@@ -12,11 +12,11 @@ namespace FileProcessing
 	{
 		#region Fields
 
-		private readonly List<string> _movieFileExtensions;
+		private readonly List<string> _validMovieFileExtensionStrings;
 
-		private readonly List<string> _videoDisplayResolutions;
+		private readonly IEnumerable<VideoDisplayResolutionLookupId> _videoDisplayResolutionEnums;
 
-		private string _directoryPath;
+		private readonly string _directoryPath;
 
 		private readonly List<string> _commonWordsToRemove; 
 
@@ -28,9 +28,9 @@ namespace FileProcessing
 		{
 			_directoryPath = directoryPath;
 
-			_movieFileExtensions = EnumUtilities.GetStringValuesExceptNone<MediaFileExtensionLookupId>();
-
-			_videoDisplayResolutions = EnumUtilities.GetStringValuesExceptNone<MediaFileExtensionLookupId>();
+			_validMovieFileExtensionStrings = EnumUtilities.GetStringValuesExceptNone<MediaFileExtensionLookupId>();
+			
+			_videoDisplayResolutionEnums = EnumUtilities.GetEnumValueList<VideoDisplayResolutionLookupId>();
 
 			_commonWordsToRemove = new List<string>
 			{
@@ -49,7 +49,7 @@ namespace FileProcessing
 
 		#region Methods
 
-		public List<VideoFile> GetVideoFiles()
+		public IEnumerable<VideoFile> GetVideoFiles()
 		{
 			// get the files in the directory with the correct file extension
 			List<FileInfo> filesWithMatchingExtensions = GetFilesWithMatchingExtensions();
@@ -74,23 +74,33 @@ namespace FileProcessing
 
 		#region Helper Methods
 
-		public List<FileInfo> GetFilesWithMatchingExtensions()
+		private List<FileInfo> GetFilesWithMatchingExtensions()
 		{
 			DirectoryInfo moviesDirectoryInfo = new DirectoryInfo(_directoryPath);
 
 			IEnumerable<FileInfo> allFiles = moviesDirectoryInfo.GetFiles("*", SearchOption.AllDirectories);
 
-			return allFiles.Where(f => _movieFileExtensions.Any(f.Extension.Equals)).ToList();
+			return allFiles.Where(f => _validMovieFileExtensionStrings.Any(f.Extension.Equals)).ToList();
 		}
 
-		public static IEnumerable<FileInfo> GetProbableSampleFiles(IEnumerable<FileInfo> movieFiles)
+		/// <summary>
+		/// Creates a list of files that are probably samples based on the name and file size.
+		/// </summary>
+		/// <param name="movieFiles">List of all movie files.</param>
+		/// <returns>List of probably sample movie files.</returns>
+		private static IEnumerable<FileInfo> GetProbableSampleFiles(IEnumerable<FileInfo> movieFiles)
 		{
 			return movieFiles
 				.Where(f => f.Name.Contains("sample", StringComparison.OrdinalIgnoreCase))
 				.Where(i => (i.Length / 1024 / 1024) < 50);
 		}
 
-		public static int GetMatchingMediaFileExtension(string extension)
+		/// <summary>
+		/// Returns the MediaFileExtensionLookupId that corresponds to the file extension.
+		/// </summary>
+		/// <param name="extension">The file extension - including the ".".</param>
+		/// <returns>The MediaFileExtensionLookupId int value.</returns>
+		internal static int GetMatchingMediaFileExtension(string extension)
 		{
 			var extensionEnums = EnumUtilities.GetEnumValueList<MediaFileExtensionLookupId>();
 			
@@ -122,9 +132,7 @@ namespace FileProcessing
 			fileName = fileName.Substring(0, fileNameLength - extensionLength);
 
 			// *********** Video Resolution ***********
-			var resolutionEnums = EnumUtilities.GetEnumValueList<VideoDisplayResolutionLookupId>();
-			
-			VideoDisplayResolutionLookupId matchingDisplayId = resolutionEnums
+			VideoDisplayResolutionLookupId matchingDisplayId = _videoDisplayResolutionEnums
 					.FirstOrDefault(
 						i => fileName.Contains
 							(
@@ -138,7 +146,7 @@ namespace FileProcessing
 			}
 
 			// *********** Year ***********
-			Regex yearRegex = new Regex(@"\d{4}");
+			Regex yearRegex = new Regex(@"\d{4}", RegexOptions.Compiled);
 
 			MatchCollection yearMatches = yearRegex.Matches(fileName);
 
@@ -168,17 +176,17 @@ namespace FileProcessing
 			fileName = fileName.Replace(@"()", string.Empty);
 
 			// get rid of things remaining in square brackets
-			Regex bracketRegex = new Regex(@"\[.*?\]");
+			Regex bracketRegex = new Regex(@"\[.*?\]", RegexOptions.Compiled);
 
 			fileName = bracketRegex.Replace(fileName, string.Empty);
 
 			// common tag by a group
-			Regex groupRegex = new Regex(@"-\w+$");
+			Regex groupRegex = new Regex(@"-\w+$", RegexOptions.Compiled);
 
 			fileName = groupRegex.Replace(fileName, string.Empty);
 
 			// get text that comes after 2 periods
-			Regex endJunk = new Regex(@"[\.\s]{2,}.*");
+			Regex endJunk = new Regex(@"[\.\s]{2,}.*", RegexOptions.Compiled);
 
 			fileName = endJunk.Replace(fileName, string.Empty);
 

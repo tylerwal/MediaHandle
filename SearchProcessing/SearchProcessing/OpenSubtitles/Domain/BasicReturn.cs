@@ -8,6 +8,6 @@ namespace SearchProcessing.OpenSubtitles.Domain
 		public string Status { get; set; }
 
 		[XmlRpcMember("seconds")]
-		public string Seconds { get; set; }
+		public double Seconds { get; set; }
 	}
 }

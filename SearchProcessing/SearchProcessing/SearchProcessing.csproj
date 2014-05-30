@@ -52,7 +52,7 @@
     <Compile Include="Constracts\IRootObject.cs" />
     <Compile Include="OpenSubtitles\Domain\BasicReturn.cs" />
     <Compile Include="OpenSubtitles\Domain\ServerInfo.cs" />
-    <Compile Include="OpenSubtitles\Domain\Token.cs" />
+    <Compile Include="OpenSubtitles\Domain\LogInResponse.cs" />
     <Compile Include="OpenSubtitles\IOpenSubtitlesProxy.cs" />
     <Compile Include="OpenSubtitles\OpenSubtitlesRequest.cs" />
     <Compile Include="Properties\Annotations.cs" />
