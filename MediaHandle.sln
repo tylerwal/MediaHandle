@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleConsole", "MediaHandleConsole\MediaHandleConsole.csproj", "{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}"
 EndProject
@@ -24,6 +24,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchProcessing.Test", "SearchProcessing.Test\SearchProcessing.Test\SearchProcessing.Test.csproj", "{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileProcessing", "FileProcessing", "{D6B8DF17-36CE-470F-9EC5-116C658DE972}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MediaHandleUtilities", "MediaHandleUtilities", "{899B38B9-28F8-41F1-BBBC-C615D23A86C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SearchProcessing", "SearchProcessing", "{7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 9
@@ -34,24 +40,30 @@ Global
 		SccProjectName1 = MediaHandleConsole
 		SccLocalPath1 = MediaHandleConsole
 		SccProjectUniqueName2 = MediaHandleUtilities\\MediaHandleUtilities\\MediaHandleUtilities.csproj
+		SccProjectTopLevelParentUniqueName2 = MediaHandle.sln
 		SccProjectName2 = MediaHandleUtilities/MediaHandleUtilities
 		SccLocalPath2 = MediaHandleUtilities\\MediaHandleUtilities
 		SccProjectUniqueName3 = MediaHandleDomain\\MediaHandleDomain\\MediaHandleDomain.csproj
 		SccProjectName3 = MediaHandleDomain/MediaHandleDomain
 		SccLocalPath3 = MediaHandleDomain\\MediaHandleDomain
 		SccProjectUniqueName4 = MovieSearch\\FileProcessing\\FileProcessing.csproj
+		SccProjectTopLevelParentUniqueName4 = MediaHandle.sln
 		SccProjectName4 = MovieSearch/FileProcessing
 		SccLocalPath4 = MovieSearch\\FileProcessing
 		SccProjectUniqueName5 = MediaHandleUtilities.Test\\MediaHandleUtilities.Test\\MediaHandleUtilities.Test.csproj
+		SccProjectTopLevelParentUniqueName5 = MediaHandle.sln
 		SccProjectName5 = MediaHandleUtilities.Test/MediaHandleUtilities.Test
 		SccLocalPath5 = MediaHandleUtilities.Test\\MediaHandleUtilities.Test
 		SccProjectUniqueName6 = SearchProcessing\\SearchProcessing\\SearchProcessing.csproj
+		SccProjectTopLevelParentUniqueName6 = MediaHandle.sln
 		SccProjectName6 = SearchProcessing/SearchProcessing
 		SccLocalPath6 = SearchProcessing\\SearchProcessing
 		SccProjectUniqueName7 = FileProcessing.Test\\FileProcessing.Test\\FileProcessing.Test.csproj
+		SccProjectTopLevelParentUniqueName7 = MediaHandle.sln
 		SccProjectName7 = FileProcessing.Test/FileProcessing.Test
 		SccLocalPath7 = FileProcessing.Test\\FileProcessing.Test
 		SccProjectUniqueName8 = SearchProcessing.Test\\SearchProcessing.Test\\SearchProcessing.Test.csproj
+		SccProjectTopLevelParentUniqueName8 = MediaHandle.sln
 		SccProjectName8 = SearchProcessing.Test/SearchProcessing.Test
 		SccLocalPath8 = SearchProcessing.Test\\SearchProcessing.Test
 	EndGlobalSection
@@ -96,7 +108,12 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
+	GlobalSection(NestedProjects) = preSolution
+		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
+		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
+		{73F0D388-A089-4C9D-8E3B-4098271E505D} = {899B38B9-28F8-41F1-BBBC-C615D23A86C4}
+		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401} = {899B38B9-28F8-41F1-BBBC-C615D23A86C4}
+		{00FF18B8-4357-4791-865E-2518039824CC} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
+		{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
 	EndGlobalSection
 EndGlobal

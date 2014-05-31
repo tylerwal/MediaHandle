@@ -37,7 +37,7 @@ namespace MediaHandleConsole
 					{
 						string title = matchedMovie.Title;
 
-						Console.WriteLine(title);
+						Console.WriteLine("{0} - {1}", title, matchedMovie.ReleaseDate);
 
 						string path = TheMovieDbResult.CreatePosterHyperlink(matchedMovie.PosterPath);
 					}

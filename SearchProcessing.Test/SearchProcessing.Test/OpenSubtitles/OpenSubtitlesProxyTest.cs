@@ -1,10 +1,10 @@
-﻿using System.Configuration;
-using System.Text.RegularExpressions;
-
-using CookComputing.XmlRpc;
+﻿using CookComputing.XmlRpc;
+using MediaHandleUtilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchProcessing.OpenSubtitles;
 using SearchProcessing.OpenSubtitles.Domain;
+using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace SearchProcessing.Test.OpenSubtitles
 {
@@ -18,8 +18,9 @@ namespace SearchProcessing.Test.OpenSubtitles
 		private string _language;
 		private string _userAgent;
 
-		private const string STATUS_OK = "200 OK";
-		private const string STATUS_UNAUTHORIZED = "401 Unauthorized";
+		private readonly string _statusOk = EnumUtilities.GetStringValue(ResponseStatusLookupId.Ok);
+		private readonly string _statusUnauthorized = EnumUtilities.GetStringValue(ResponseStatusLookupId.Unauthorized);
+		private readonly string _statusUnknownUserAgent = EnumUtilities.GetStringValue(ResponseStatusLookupId.UnknownUserAgent);
 
 		#endregion Fields
 
@@ -58,7 +59,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 
 			Assert.IsNotNull(logInResponse.Status, "The LogIn response status was null.");
 			
-			Assert.AreEqual(STATUS_OK, logInResponse.Status, "The LogIn response status was not passing.");
+			Assert.AreEqual(_statusOk, logInResponse.Status, "The LogIn response status was not passing.");
 		}
 
 		[TestMethod]
@@ -70,9 +71,33 @@ namespace SearchProcessing.Test.OpenSubtitles
 
 			Assert.IsNotNull(logInResponse.Status, "The LogIn response status was null.");
 
-			Assert.AreEqual(STATUS_UNAUTHORIZED, logInResponse.Status, "The LogIn response status was not passing.");
+			Assert.AreEqual(_statusUnauthorized, logInResponse.Status, "The LogIn response status was Ok when it should have been Unauthorized.");
 		}
 
+		[TestMethod]
+		public void LogInUserNameFailTest()
+		{
+			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
+
+			LogInResponse logInResponse = proxy.LogIn("wrongUsername", _password, _language, _userAgent);
+
+			Assert.IsNotNull(logInResponse.Status, "The LogIn response status was null.");
+
+			Assert.AreEqual(_statusUnauthorized, logInResponse.Status, "The LogIn response status was Ok when it should have been Unauthorized.");
+		}
+
+		[TestMethod]
+		public void LogInUserAgentFailTest()
+		{
+			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
+
+			LogInResponse logInResponse = proxy.LogIn(_username, _password, _language, "wrongUsername");
+
+			Assert.IsNotNull(logInResponse.Status, "The LogIn response status was null.");
+
+			Assert.AreEqual(_statusUnknownUserAgent, logInResponse.Status, "The LogIn response status was Ok when it should have been Unknown UserAgent.");
+		}
+		
 		[TestMethod]
 		public void LogInTokenTest()
 		{

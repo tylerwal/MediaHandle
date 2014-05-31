@@ -63,6 +63,10 @@
     <Compile Include="SettingsTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">
+      <Project>{73f0d388-a089-4c9d-8e3b-4098271e505d}</Project>
+      <Name>MediaHandleUtilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\SearchProcessing\SearchProcessing\SearchProcessing.csproj">
       <Project>{00ff18b8-4357-4791-865e-2518039824cc}</Project>
       <Name>SearchProcessing</Name>

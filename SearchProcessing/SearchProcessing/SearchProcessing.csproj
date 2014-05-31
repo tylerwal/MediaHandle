@@ -51,6 +51,7 @@
     <Compile Include="Constracts\IResult.cs" />
     <Compile Include="Constracts\IRootObject.cs" />
     <Compile Include="OpenSubtitles\Domain\BasicReturn.cs" />
+    <Compile Include="OpenSubtitles\Domain\ResponseStatusLookupId.cs" />
     <Compile Include="OpenSubtitles\Domain\ServerInfo.cs" />
     <Compile Include="OpenSubtitles\Domain\LogInResponse.cs" />
     <Compile Include="OpenSubtitles\IOpenSubtitlesProxy.cs" />
@@ -68,6 +69,12 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">
+      <Project>{73f0d388-a089-4c9d-8e3b-4098271e505d}</Project>
+      <Name>MediaHandleUtilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
