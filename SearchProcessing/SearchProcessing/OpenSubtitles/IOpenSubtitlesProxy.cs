@@ -12,5 +12,8 @@ namespace SearchProcessing.OpenSubtitles
 
 		[XmlRpcMethod("LogIn")]
 		LogInResponse LogIn(string username, string password, string language, string userAgent);
+		
+		[XmlRpcMethod("LogOut")]
+		BasicResponse LogOut(string token);
 	}
 }

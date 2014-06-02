@@ -3,7 +3,7 @@ using MediaHandleUtilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchProcessing.OpenSubtitles;
 using SearchProcessing.OpenSubtitles.Domain;
-using System.Configuration;
+using SearchProcessing.Utilities;
 using System.Text.RegularExpressions;
 
 namespace SearchProcessing.Test.OpenSubtitles
@@ -18,6 +18,8 @@ namespace SearchProcessing.Test.OpenSubtitles
 		private string _language;
 		private string _userAgent;
 
+		private IOpenSubtitlesProxy _proxy;
+
 		private readonly string _statusOk = EnumUtilities.GetStringValue(ResponseStatusLookupId.Ok);
 		private readonly string _statusUnauthorized = EnumUtilities.GetStringValue(ResponseStatusLookupId.Unauthorized);
 		private readonly string _statusUnknownUserAgent = EnumUtilities.GetStringValue(ResponseStatusLookupId.UnknownUserAgent);
@@ -27,10 +29,14 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestInitialize]
 		public void TestInitialize()
 		{
-			_username = ConfigurationManager.AppSettings.Get("Username");
-			_password = ConfigurationManager.AppSettings.Get("Password");
-			_language = ConfigurationManager.AppSettings.Get("Language");
-			_userAgent = ConfigurationManager.AppSettings.Get("UserAgent");
+			Configuration.Initialize();
+
+			_username = Configuration.OpenSubtitles.Username;
+			_password = Configuration.OpenSubtitles.Password;
+			_language = Configuration.OpenSubtitles.Language;
+			_userAgent = Configuration.OpenSubtitles.UserAgent;
+
+			_proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
 		}
 
 		/// <summary>
@@ -41,9 +47,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestMethod]
 		public void ServerInfoTest()
 		{
-			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
-
-			ServerInfo serviceInfo = proxy.ServiceInfo();
+			ServerInfo serviceInfo = _proxy.ServiceInfo();
 
 			Assert.AreEqual("http://api.opensubtitles.org/xml-rpc", serviceInfo.XmlRpcUrl, "The ServerInfo() method did not returned the expected xmlrpc url.");
 
@@ -53,9 +57,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestMethod]
 		public void LogInStatusPassTest()
 		{
-			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
-			
-			LogInResponse logInResponse = proxy.LogIn(_username, _password, _language, _userAgent);
+			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
 
 			Assert.IsNotNull(logInResponse.Status, "The LogIn response status was null.");
 			
@@ -65,9 +67,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestMethod]
 		public void LogInStatusFailTest()
 		{
-			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
-
-			LogInResponse logInResponse = proxy.LogIn(_username, "wrongPassword", _language, _userAgent);
+			LogInResponse logInResponse = _proxy.LogIn(_username, "wrongPassword", _language, _userAgent);
 
 			Assert.IsNotNull(logInResponse.Status, "The LogIn response status was null.");
 
@@ -77,9 +77,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestMethod]
 		public void LogInUserNameFailTest()
 		{
-			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
-
-			LogInResponse logInResponse = proxy.LogIn("wrongUsername", _password, _language, _userAgent);
+			LogInResponse logInResponse = _proxy.LogIn("wrongUsername", _password, _language, _userAgent);
 
 			Assert.IsNotNull(logInResponse.Status, "The LogIn response status was null.");
 
@@ -89,9 +87,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestMethod]
 		public void LogInUserAgentFailTest()
 		{
-			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
-
-			LogInResponse logInResponse = proxy.LogIn(_username, _password, _language, "wrongUsername");
+			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, "wrongUsername");
 
 			Assert.IsNotNull(logInResponse.Status, "The LogIn response status was null.");
 
@@ -101,15 +97,23 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestMethod]
 		public void LogInTokenTest()
 		{
-			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
-
-			LogInResponse logInResponse = proxy.LogIn(_username, _password, _language, _userAgent);
+			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
 
 			Assert.IsNotNull(logInResponse.Token, "The LogIn response token was null.");
 
 			Regex tokenRegex = new Regex(@"[0-9a-z]+", RegexOptions.Compiled);
 			bool isMatch = tokenRegex.Match(logInResponse.Token).Success;
 			Assert.IsTrue(isMatch, "The LogIn response token was not in the expected form.");
+		}
+
+		[TestMethod]
+		public void LogOutTest()
+		{
+			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
+			
+			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
+
+			Assert.AreEqual(_statusOk, basicResponse.Status, "The LogOut attempt did not result in an Ok status.");
 		}
 	}
 }

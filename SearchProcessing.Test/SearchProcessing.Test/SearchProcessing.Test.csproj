@@ -58,9 +58,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="OpenSubtitles\OpenSubtitlesConfigurationTest.cs" />
     <Compile Include="OpenSubtitles\OpenSubtitlesProxyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SettingsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">

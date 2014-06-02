@@ -2,7 +2,7 @@
 
 namespace SearchProcessing.OpenSubtitles.Domain
 {
-	public class BasicReturn
+	public class BasicResponse
 	{
 		[XmlRpcMember("status")]
 		public string Status { get; set; }
