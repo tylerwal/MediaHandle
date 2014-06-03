@@ -17,9 +17,9 @@ namespace SearchProcessing.OpenSubtitles
 		private string _language;
 		private string _userAgent;
 
-		private IOpenSubtitlesProxy _proxy;
+		private readonly IOpenSubtitlesProxy _proxy;
 
-		private LogInResponse _logInResponse;
+		private readonly LogInResponse _logInResponse;
 
 		#endregion Fields
 
@@ -40,14 +40,19 @@ namespace SearchProcessing.OpenSubtitles
 
 		public void Dispose()
 		{
-			_proxy.LogOut(_logInResponse.Token);
+			LogOut();
 		}
 
 		#endregion IDisposable Members
 
 		#region Methods
 
+		public ResponseStatusLookupId GetSessionStatus()
+		{
+			BasicResponse response = _proxy.SessionCheck(_logInResponse.Token);
 
+			return response.GetResponseStatus();
+		}
 
 		#endregion Methods
 
@@ -64,6 +69,13 @@ namespace SearchProcessing.OpenSubtitles
 			_password = ConfigurationSettings.OpenSubtitles.Password;
 			_language = ConfigurationSettings.OpenSubtitles.Language;
 			_userAgent = ConfigurationSettings.OpenSubtitles.UserAgent;
+		}
+
+		private bool LogOut()
+		{
+			ResponseStatusLookupId status = _proxy.LogOut(_logInResponse.Token).GetResponseStatus();
+
+			return status == ResponseStatusLookupId.Ok;
 		}
 
 		#endregion Helper Methods
