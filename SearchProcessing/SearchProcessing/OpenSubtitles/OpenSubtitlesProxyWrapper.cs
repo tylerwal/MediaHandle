@@ -1,6 +1,6 @@
 ﻿using CookComputing.XmlRpc;
+using MediaHandleUtilities.Configuration;
 using SearchProcessing.OpenSubtitles.Domain;
-using SearchProcessing.Utilities;
 using System;
 
 namespace SearchProcessing.OpenSubtitles
@@ -13,12 +13,13 @@ namespace SearchProcessing.OpenSubtitles
 		#region Fields
 
 		private string _username;
-
 		private string _password;
-
 		private string _language;
-
 		private string _userAgent;
+
+		private IOpenSubtitlesProxy _proxy;
+
+		private LogInResponse _logInResponse;
 
 		#endregion Fields
 
@@ -28,9 +29,9 @@ namespace SearchProcessing.OpenSubtitles
 		{
 			InitializeConfiguration();
 
-			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
+			_proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
 
-			LogInResponse logInResponse = proxy.LogIn(_username, _password, _language, _userAgent);
+			_logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
 		}
 
 		#endregion Constructor
@@ -39,7 +40,7 @@ namespace SearchProcessing.OpenSubtitles
 
 		public void Dispose()
 		{
-			throw new NotImplementedException();
+			_proxy.LogOut(_logInResponse.Token);
 		}
 
 		#endregion IDisposable Members
@@ -57,15 +58,12 @@ namespace SearchProcessing.OpenSubtitles
 		/// </summary>
 		private void InitializeConfiguration()
 		{
-			Configuration.Initialize();
+			ConfigurationSettings.Initialize();
 
-			_username = Configuration.OpenSubtitles.Username;
-
-			_password = Configuration.OpenSubtitles.Password;
-
-			_language = Configuration.OpenSubtitles.Language;
-
-			_userAgent = Configuration.OpenSubtitles.UserAgent;
+			_username = ConfigurationSettings.OpenSubtitles.Username;
+			_password = ConfigurationSettings.OpenSubtitles.Password;
+			_language = ConfigurationSettings.OpenSubtitles.Language;
+			_userAgent = ConfigurationSettings.OpenSubtitles.UserAgent;
 		}
 
 		#endregion Helper Methods

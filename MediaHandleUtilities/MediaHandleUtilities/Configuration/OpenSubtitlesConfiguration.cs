@@ -1,7 +1,7 @@
-﻿using SearchProcessing.Annotations;
+﻿using MediaHandleUtilities.Annotations;
 using System.Configuration;
 
-namespace SearchProcessing.OpenSubtitles
+namespace MediaHandleUtilities.Configuration
 {
 	[UsedImplicitly]
 	public class OpenSubtitlesConfiguration : ConfigurationSection

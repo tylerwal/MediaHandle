@@ -50,9 +50,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MediaHandleDomain\MediaHandleDomain\MediaHandleDomain.csproj">
       <Project>{a43f69b2-b28d-4186-9a50-5bcca2da1390}</Project>
       <Name>MediaHandleDomain</Name>
@@ -69,6 +66,9 @@
       <Project>{00ff18b8-4357-4791-865e-2518039824cc}</Project>
       <Name>SearchProcessing</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

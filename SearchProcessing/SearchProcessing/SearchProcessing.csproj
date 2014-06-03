@@ -56,7 +56,6 @@
     <Compile Include="OpenSubtitles\Domain\ServerInfo.cs" />
     <Compile Include="OpenSubtitles\Domain\LogInResponse.cs" />
     <Compile Include="OpenSubtitles\IOpenSubtitlesProxy.cs" />
-    <Compile Include="OpenSubtitles\OpenSubtitlesConfiguration.cs" />
     <Compile Include="OpenSubtitles\OpenSubtitlesProxyWrapper.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="QueryConstants.cs" />
@@ -65,13 +64,6 @@
     <Compile Include="TheMovieDb\TheMovieDbResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheMovieDb\TheMovieDbRootResult.cs" />
-    <Compile Include="Utilities\Configuration.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">
