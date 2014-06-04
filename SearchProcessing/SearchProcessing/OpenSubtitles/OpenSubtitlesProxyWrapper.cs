@@ -23,6 +23,18 @@ namespace SearchProcessing.OpenSubtitles
 
 		#endregion Fields
 
+		#region Properties
+
+		public string Token
+		{
+			get
+			{
+				return _logInResponse == null ? null : _logInResponse.Token;
+			}
+		}
+
+		#endregion Properties
+
 		#region Constructor
 
 		public OpenSubtitlesProxyWrapper()
@@ -54,6 +66,13 @@ namespace SearchProcessing.OpenSubtitles
 			return response.GetResponseStatus();
 		}
 
+		public bool LogOut()
+		{
+			ResponseStatusLookupId status = _proxy.LogOut(_logInResponse.Token).GetResponseStatus();
+
+			return status == ResponseStatusLookupId.Ok;
+		}
+
 		#endregion Methods
 
 		#region Helper Methods
@@ -70,14 +89,14 @@ namespace SearchProcessing.OpenSubtitles
 			_language = ConfigurationSettings.OpenSubtitles.Language;
 			_userAgent = ConfigurationSettings.OpenSubtitles.UserAgent;
 		}
-
-		private bool LogOut()
-		{
-			ResponseStatusLookupId status = _proxy.LogOut(_logInResponse.Token).GetResponseStatus();
-
-			return status == ResponseStatusLookupId.Ok;
-		}
-
+		
 		#endregion Helper Methods
+
+		public static BasicResponse SessionCheck(string token)
+		{
+			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
+
+			return proxy.SessionCheck(token);
+		}
 	}
 }

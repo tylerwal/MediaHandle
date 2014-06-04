@@ -60,7 +60,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 			
 			Assert.AreEqual(ResponseStatusLookupId.Ok, logInResponse.GetResponseStatus(), "The LogIn response status was not passing.");
 
-			// still should log out to complete transaction
+			// still should log out to complete connection
 			_proxy.LogOut(logInResponse.Token);
 		}
 
@@ -116,6 +116,10 @@ namespace SearchProcessing.Test.OpenSubtitles
 			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
 
 			Assert.AreEqual(ResponseStatusLookupId.Ok, basicResponse.GetResponseStatus(), "The LogOut attempt did not result in an Ok status.");
+
+			BasicResponse afterLogOutResponse = _proxy.SessionCheck(logInResponse.Token);
+
+			Assert.AreEqual(ResponseStatusLookupId.NoSession, afterLogOutResponse.GetResponseStatus(), "The account is still logged in after a LogOut attempt.");
 		}
 	}
 }
