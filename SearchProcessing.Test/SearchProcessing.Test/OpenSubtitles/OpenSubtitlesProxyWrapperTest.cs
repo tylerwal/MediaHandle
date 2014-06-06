@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CookComputing.XmlRpc;
+
+using MediaHandleUtilities.Configuration;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchProcessing.OpenSubtitles;
 using SearchProcessing.OpenSubtitles.Domain;
 
@@ -56,6 +60,38 @@ namespace SearchProcessing.Test.OpenSubtitles
 			BasicResponse response = OpenSubtitlesProxyWrapper.SessionCheck(token);
 
 			Assert.AreEqual(ResponseStatusLookupId.NoSession, response.GetResponseStatus(), "The session was not ended correctly.");
+		}
+
+		/// <summary>
+		/// Tests the Token property.
+		/// </summary>
+		[TestMethod]
+		public void TokenTest()
+		{
+			using (OpenSubtitlesProxyWrapper wrapper = new OpenSubtitlesProxyWrapper())
+			{
+				Assert.IsNotNull(wrapper.Token, "The Token should not be null.");
+
+				Assert.AreNotEqual(string.Empty, wrapper.Token, "The Token should not be empty.");
+			}
+		}
+
+		/// <summary>
+		/// Tests the Token property when the LogInResponse is null.
+		/// </summary>
+		[TestMethod]
+		public void TokenLogInResponseNullTest()
+		{
+			ConfigurationSettings.Initialize();
+
+			string username = ConfigurationSettings.OpenSubtitles.Username;
+			string password = ConfigurationSettings.OpenSubtitles.Password;
+			string language = ConfigurationSettings.OpenSubtitles.Language;
+			string userAgent = ConfigurationSettings.OpenSubtitles.UserAgent;
+
+			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
+
+			LogInResponse logInResponse = proxy.LogIn(username, password, language, userAgent);
 		}
 	}
 }
