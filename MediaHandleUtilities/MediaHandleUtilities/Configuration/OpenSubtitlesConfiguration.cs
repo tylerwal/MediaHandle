@@ -1,9 +1,7 @@
-﻿using MediaHandleUtilities.Annotations;
-using System.Configuration;
+﻿using System.Configuration;
 
 namespace MediaHandleUtilities.Configuration
 {
-	[UsedImplicitly]
 	public class OpenSubtitlesConfiguration : ConfigurationSection
 	{
 		[ConfigurationProperty("Username")]

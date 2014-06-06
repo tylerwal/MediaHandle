@@ -1,9 +1,7 @@
 ﻿using CookComputing.XmlRpc;
-using SearchProcessing.Annotations;
 
 namespace SearchProcessing.OpenSubtitles.Domain
 {
-	[UsedImplicitly]
 	public class ServerInfo
 	{
 		[XmlRpcMember("xmlrpc_version")]

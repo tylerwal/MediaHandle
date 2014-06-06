@@ -57,7 +57,6 @@
     <Compile Include="OpenSubtitles\Domain\LogInResponse.cs" />
     <Compile Include="OpenSubtitles\IOpenSubtitlesProxy.cs" />
     <Compile Include="OpenSubtitles\OpenSubtitlesProxyWrapper.cs" />
-    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="QueryConstants.cs" />
     <Compile Include="RequestProcess.cs" />
     <Compile Include="TheMovieDb\TheMovieDbRequest.cs" />

@@ -55,7 +55,7 @@ namespace SearchProcessing.Test.OpenSubtitles
 
 			BasicResponse response = OpenSubtitlesProxyWrapper.SessionCheck(token);
 
-			Assert.AreEqual(ResponseStatusLookupId.NoSession, response.Status, "The session was not ended correctly.");
+			Assert.AreEqual(ResponseStatusLookupId.NoSession, response.GetResponseStatus(), "The session was not ended correctly.");
 		}
 	}
 }

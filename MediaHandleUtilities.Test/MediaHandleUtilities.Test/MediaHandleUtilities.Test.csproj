@@ -59,6 +59,8 @@
     <Compile Include="EnumUtilitiesTest.cs" />
     <Compile Include="HashUtilityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensionsTest.cs" />
+    <Compile Include="StringValueAttributeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">
