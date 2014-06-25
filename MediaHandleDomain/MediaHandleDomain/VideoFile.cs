@@ -25,20 +25,20 @@ namespace MediaHandleDomain
 
 		public VideoFile(FileInfo fileInfo)
 		{
-			_fileInfo = fileInfo;
+			FileInfo = fileInfo;
 		}
 
 		public VideoFile(FileInfo fileInfo, int mediaFileExtensionLookupId)
 		{
-			_fileInfo = fileInfo;
-			_mediaFileExtensionLookupId = mediaFileExtensionLookupId;
+			FileInfo = fileInfo;
+			MediaFileExtensionLookupId = mediaFileExtensionLookupId;
 		}
 
 		public VideoFile(FileInfo fileInfo, int mediaFileExtensionLookupId, int videoDisplayResolutionLookupId)
 		{
-			_fileInfo = fileInfo;
-			_mediaFileExtensionLookupId = mediaFileExtensionLookupId;
-			_videoDisplayResolutionLookupId = videoDisplayResolutionLookupId;
+			FileInfo = fileInfo;
+			MediaFileExtensionLookupId = mediaFileExtensionLookupId;
+			VideoDisplayResolutionLookupId = videoDisplayResolutionLookupId;
 		}
 
 		#endregion Constructor

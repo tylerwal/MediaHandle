@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleConsole", "MediaHandleConsole\MediaHandleConsole.csproj", "{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}"
 EndProject
@@ -31,9 +31,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MediaHandleUtilities", "Med
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SearchProcessing", "SearchProcessing", "{7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleDomainTest", "MediaHandleDomainTest\MediaHandleDomainTest\MediaHandleDomainTest.csproj", "{106F427F-610F-4A65-9A3A-69902928BEC7}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 9
+		SccNumberOfProjects = 10
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -67,6 +69,9 @@ Global
 		SccProjectTopLevelParentUniqueName8 = MediaHandle.sln
 		SccProjectName8 = SearchProcessing.Test/SearchProcessing.Test
 		SccLocalPath8 = SearchProcessing.Test\\SearchProcessing.Test
+		SccProjectUniqueName9 = MediaHandleDomainTest\\MediaHandleDomainTest\\MediaHandleDomainTest.csproj
+		SccProjectName9 = MediaHandleDomainTest/MediaHandleDomainTest
+		SccLocalPath9 = MediaHandleDomainTest\\MediaHandleDomainTest
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,19 +110,20 @@ Global
 		{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{106F427F-610F-4A65-9A3A-69902928BEC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{106F427F-610F-4A65-9A3A-69902928BEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{106F427F-610F-4A65-9A3A-69902928BEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{106F427F-610F-4A65-9A3A-69902928BEC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401} = {899B38B9-28F8-41F1-BBBC-C615D23A86C4}
 		{73F0D388-A089-4C9D-8E3B-4098271E505D} = {899B38B9-28F8-41F1-BBBC-C615D23A86C4}
-		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
 		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
-		{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
+		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401} = {899B38B9-28F8-41F1-BBBC-C615D23A86C4}
 		{00FF18B8-4357-4791-865E-2518039824CC} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
+		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
+		{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
 	EndGlobalSection
 EndGlobal
