@@ -33,9 +33,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SearchProcessing", "SearchP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleDomainTest", "MediaHandleDomainTest\MediaHandleDomainTest\MediaHandleDomainTest.csproj", "{106F427F-610F-4A65-9A3A-69902928BEC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleTestUtilities", "MediaHandleTestUtilities\MediaHandleTestUtilities\MediaHandleTestUtilities.csproj", "{6374D4FA-1176-41BF-BC47-39723D6A3B2B}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -72,6 +74,9 @@ Global
 		SccProjectUniqueName9 = MediaHandleDomainTest\\MediaHandleDomainTest\\MediaHandleDomainTest.csproj
 		SccProjectName9 = MediaHandleDomainTest/MediaHandleDomainTest
 		SccLocalPath9 = MediaHandleDomainTest\\MediaHandleDomainTest
+		SccProjectUniqueName10 = MediaHandleTestUtilities\\MediaHandleTestUtilities\\MediaHandleTestUtilities.csproj
+		SccProjectName10 = MediaHandleTestUtilities/MediaHandleTestUtilities
+		SccLocalPath10 = MediaHandleTestUtilities\\MediaHandleTestUtilities
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +119,10 @@ Global
 		{106F427F-610F-4A65-9A3A-69902928BEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{106F427F-610F-4A65-9A3A-69902928BEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{106F427F-610F-4A65-9A3A-69902928BEC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6374D4FA-1176-41BF-BC47-39723D6A3B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6374D4FA-1176-41BF-BC47-39723D6A3B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6374D4FA-1176-41BF-BC47-39723D6A3B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6374D4FA-1176-41BF-BC47-39723D6A3B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

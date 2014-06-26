@@ -13,16 +13,12 @@ namespace MediaHandleConsole
 	{
 		static void Main(string[] args)
 		{
-			//FileProcess fileProcess = new FileProcess(@"C:\Users\Tyler\Downloads\");
-
-			//FileProcess fileProcess = new FileProcess(@"\\SERVER\Downloads\Movies\");
-
-			FileProcess fileProcess = new FileProcess(@"Z:\Sort\");
+			FileProcess fileProcess = new FileProcess(@"C:\MediaHandleTest\");
 
 			IEnumerable<VideoFile> videoFiles = fileProcess.GetVideoFiles();
 
 			IRequest movieDbRequest = new TheMovieDbRequest();
-			
+
 			foreach (VideoFile videoFile in videoFiles)
 			{
 				try
@@ -40,6 +36,12 @@ namespace MediaHandleConsole
 						Console.WriteLine("{0} - {1}", title, matchedMovie.ReleaseDate);
 
 						string path = TheMovieDbResult.CreatePosterHyperlink(matchedMovie.PosterPath);
+					}
+					else
+					{
+						Console.ForegroundColor = ConsoleColor.Red;
+						Console.WriteLine("Movie not found - {0}.", videoFile.FileInfo.Name);
+						Console.ForegroundColor = ConsoleColor.White;
 					}
 				}
 				catch (Exception e)

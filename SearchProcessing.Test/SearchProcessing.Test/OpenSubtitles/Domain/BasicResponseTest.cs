@@ -12,15 +12,14 @@ namespace SearchProcessing.Test.OpenSubtitles.Domain
 	{
 		#region Fields
 
-		private readonly Dictionary<ResponseStatusLookupId, string> _statusCodes;
+		private Dictionary<ResponseStatusLookupId, string> _statusCodes;
 
 		#endregion Fields
-		
 
-		[TestMethod]
-		public void GetResponseStatusTest()
+		[TestInitialize]
+		public void TestInitialize()
 		{
-			Dictionary<ResponseStatusLookupId, string> statusCodes = new Dictionary<ResponseStatusLookupId, string>
+			_statusCodes = new Dictionary<ResponseStatusLookupId, string>
 			{
 				{ResponseStatusLookupId.Ok, "200 OK"},
 				{ResponseStatusLookupId.OkPartial, "206 Partial content; message"},
@@ -43,10 +42,15 @@ namespace SearchProcessing.Test.OpenSubtitles.Domain
 				{ResponseStatusLookupId.InternalSubtitleValidationFail, "416 Internal subtitle validation failed"},
 				{ResponseStatusLookupId.ServiceUnavailable, "503 Service Unavailable"},
 			};
+		}
 
+
+		[TestMethod]
+		public void GetResponseStatusTest()
+		{
 			BasicResponse basicResponse = new BasicResponse();
 
-			foreach (KeyValuePair<ResponseStatusLookupId, string> statusCode in statusCodes)
+			foreach (KeyValuePair<ResponseStatusLookupId, string> statusCode in _statusCodes)
 			{
 				basicResponse.Status = statusCode.Value;
 

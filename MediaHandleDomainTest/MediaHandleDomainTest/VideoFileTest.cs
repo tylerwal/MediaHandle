@@ -1,9 +1,6 @@
-﻿using System;
-using System.IO;
-
-using MediaHandleDomain;
-
+﻿using MediaHandleDomain;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 
 namespace MediaHandleDomainTest
 {
