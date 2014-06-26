@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace MediaHandleUtilities
 {
@@ -10,52 +8,55 @@ namespace MediaHandleUtilities
 	/// </summary>
 	public static class HashUtility
 	{
-		public static string ComputeMovieHash(string filename)
+		private const int _sixteenBitWordSize = 65536;
+		private const int _longSize = sizeof(long);
+
+		public static string ComputeMovieHash(string filePath)
 		{
 			byte[] result;
-			using (Stream input = File.OpenRead(filename))
+			using (Stream input = File.OpenRead(filePath))
 			{
 				result = ComputeMovieHash(input);
 			}
-			return ToHexadecimal(result);
+			
+			// convert the result to a string representation
+			return BitConverter.ToString(result).Replace("-", string.Empty);
 		}
 
 		private static byte[] ComputeMovieHash(Stream input)
 		{
-			long streamsize = input.Length;
-			long lhash = streamsize;
-
-			long i = 0;
+			long streamSize = input.Length;
+			long lhash = streamSize;
 			byte[] buffer = new byte[sizeof(long)];
-			while (i < 65536 / sizeof(long) && (input.Read(buffer, 0, sizeof(long)) > 0))
-			{
-				i++;
-				lhash += BitConverter.ToInt64(buffer, 0);
-			}
 
-			input.Position = Math.Max(0, streamsize - 65536);
-			i = 0;
-			while (i < 65536 / sizeof(long) && (input.Read(buffer, 0, sizeof(long)) > 0))
-			{
-				i++;
-				lhash += BitConverter.ToInt64(buffer, 0);
-			}
-			input.Close();
+			lhash = ReadFile(input, buffer, lhash);
+
+			// if file size is small enough, start at beginning position again; otherwise, read end of file
+			input.Position = Math.Max(0, streamSize - _sixteenBitWordSize);
+
+			lhash = ReadFile(input, buffer, lhash);
+			
+			// I think the next line is not necessary because of the 'using' above
+			//input.Close();
+
 			byte[] result = BitConverter.GetBytes(lhash);
 			Array.Reverse(result);
+
 			return result;
 		}
 
-		private static string ToHexadecimal(IEnumerable<byte> bytes)
+		private static long ReadFile(Stream input,  byte[] buffer, long lhash)
 		{
-			StringBuilder hexBuilder = new StringBuilder();
+			long increment = 0;
 
-			foreach (byte b in bytes)
+			while (increment < (_sixteenBitWordSize / _longSize)
+				&& (input.Read(buffer, 0, _longSize) > 0))
 			{
-				hexBuilder.Append(b.ToString("x2"));
+				increment++;
+				lhash += BitConverter.ToInt64(buffer, 0);
 			}
 
-			return hexBuilder.ToString().ToUpper();
+			return lhash;
 		}
 	}
 
