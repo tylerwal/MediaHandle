@@ -48,5 +48,8 @@ namespace SearchProcessing.OpenSubtitles
 		/// <returns>Status and Seconds</returns>
 		[XmlRpcMethod("NoOperation")]
 		BasicResponse SessionCheck(string token);
+
+		[XmlRpcMethod("CheckMovieHash")]
+		SearchByHashResponse SearchByHash(string token, string[] fileHash);
 	}
 }

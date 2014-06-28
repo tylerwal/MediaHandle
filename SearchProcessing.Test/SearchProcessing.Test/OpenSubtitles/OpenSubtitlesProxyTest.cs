@@ -1,4 +1,6 @@
-﻿using CookComputing.XmlRpc;
+﻿using System.Collections;
+
+using CookComputing.XmlRpc;
 using MediaHandleUtilities.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchProcessing.OpenSubtitles;
@@ -120,6 +122,34 @@ namespace SearchProcessing.Test.OpenSubtitles
 			BasicResponse afterLogOutResponse = _proxy.SessionCheck(logInResponse.Token);
 
 			Assert.AreEqual(ResponseStatusLookupId.NoSession, afterLogOutResponse.GetResponseStatus(), "The account is still logged in after a LogOut attempt.");
+		}
+
+		/// <summary>
+		/// Tests the SearchByHash interface method.
+		/// </summary>
+		[TestMethod]
+		public void SearchByHashTest()
+		{
+			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
+
+			string hash = "073f8fc5d170434e";
+			hash = "000";
+
+			SearchByHashResponse searchResponse = _proxy.SearchByHash(logInResponse.Token, new string[]
+			{
+				hash
+			});
+
+			foreach (DictionaryEntry test2 in searchResponse.MediaData)
+			{
+				var test3 = test2.GetType();
+			}
+
+			var test = searchResponse.MediaData[hash];
+
+			//var type = test.GetType();
+
+			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
 		}
 	}
 }

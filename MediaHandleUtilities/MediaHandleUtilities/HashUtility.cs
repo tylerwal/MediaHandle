@@ -26,26 +26,35 @@ namespace MediaHandleUtilities
 		private static byte[] ComputeMovieHash(Stream input)
 		{
 			long streamSize = input.Length;
-			long lhash = streamSize;
-			byte[] buffer = new byte[sizeof(long)];
+			long hash = streamSize;
+			byte[] buffer = new byte[_longSize];
 
-			lhash = ReadFile(input, buffer, lhash);
+			hash = ReadFile(input, buffer, hash);
 
 			// if file size is small enough, start at beginning position again; otherwise, read end of file
 			input.Position = Math.Max(0, streamSize - _sixteenBitWordSize);
 
-			lhash = ReadFile(input, buffer, lhash);
+			hash = ReadFile(input, buffer, hash);
 			
 			// I think the next line is not necessary because of the 'using' above
 			//input.Close();
 
-			byte[] result = BitConverter.GetBytes(lhash);
+			// convert integer value of hash into array of bytes
+			byte[] result = BitConverter.GetBytes(hash);
 			Array.Reverse(result);
 
 			return result;
 		}
 
-		private static long ReadFile(Stream input,  byte[] buffer, long lhash)
+		/// <summary>
+		/// Method that is ran twice during the Hash operation; once for the beginning of the file, once for the end of the
+		/// file.  If the file is extremely short, this operation will act on the same byte stream.
+		/// </summary>
+		/// <param name="input">The file stream.</param>
+		/// <param name="buffer">The buffer that holds the file data.</param>
+		/// <param name="hash">The hash that is being generated.</param>
+		/// <returns>The hash that is being generated.</returns>
+		private static long ReadFile(Stream input,  byte[] buffer, long hash)
 		{
 			long increment = 0;
 
@@ -53,10 +62,10 @@ namespace MediaHandleUtilities
 				&& (input.Read(buffer, 0, _longSize) > 0))
 			{
 				increment++;
-				lhash += BitConverter.ToInt64(buffer, 0);
+				hash += BitConverter.ToInt64(buffer, 0);
 			}
 
-			return lhash;
+			return hash;
 		}
 	}
 

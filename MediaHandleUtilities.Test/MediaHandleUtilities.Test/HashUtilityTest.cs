@@ -14,8 +14,7 @@ namespace MediaHandleUtilities.Test
 			// breakdance.avi
 			string breakdanceAviHash = HashUtility.ComputeMovieHash(@"HashUtilityTestItems\breakdance.avi");
 			Assert.AreEqual("8E245D9679D31E12", breakdanceAviHash, "The hash generated for breakdance.avi did not match the expected hash.");
-
-
+			
 			// dummy.rar
 			// commented out because while the packed .rar file (source control'ed) is 2 MB, the unpacked .bin file is 4 gb
 			// if you would like to run this test, delete .bin file afterwards if you want to clean up wasted space
