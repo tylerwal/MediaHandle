@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using CookComputing.XmlRpc;
 using MediaHandleUtilities.Configuration;
@@ -124,6 +127,8 @@ namespace SearchProcessing.Test.OpenSubtitles
 			Assert.AreEqual(ResponseStatusLookupId.NoSession, afterLogOutResponse.GetResponseStatus(), "The account is still logged in after a LogOut attempt.");
 		}
 
+		#region Search By Hash tests
+
 		/// <summary>
 		/// Tests the SearchByHash interface method.
 		/// </summary>
@@ -140,9 +145,20 @@ namespace SearchProcessing.Test.OpenSubtitles
 				hash
 			});
 
+			// foreach (XmlRpcStruct SearchResult in ((object[])ResponseStruct["data"]))
+
+			IEnumerable<DictionaryEntry> dictionaryEnties = searchResponse.MediaData
+															.OfType<DictionaryEntry>()
+															.Where(i => i.Value.GetType() == typeof(XmlRpcStruct));
+
+			int countOfEverything = dictionaryEnties.Count();
+			int countOfStructs = dictionaryEnties.Count(i => i.Value.GetType() == typeof(XmlRpcStruct));
+
 			foreach (DictionaryEntry test2 in searchResponse.MediaData)
 			{
-				var test3 = test2.GetType();
+				var test3 = test2.Value;
+				Type valueType = test3.GetType();
+				Type test4 = test2.GetType();
 			}
 
 			var test = searchResponse.MediaData[hash];
@@ -151,5 +167,32 @@ namespace SearchProcessing.Test.OpenSubtitles
 
 			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
 		}
+
+		/// <summary>
+		/// Tests the SearchByHash interface method when a known hash should only produce a single movie response.
+		/// </summary>
+		[TestMethod]
+		public void SearchByHashSingleResponseTest()
+		{
+			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
+
+			const string hash = "073f8fc5d170434e";
+
+			SearchByHashResponse searchResponse = _proxy.SearchByHash(logInResponse.Token, new string[]
+			{
+				hash
+			});
+
+			IEnumerable<XmlRpcStruct> dictionaryEnties = searchResponse.MediaData
+				.OfType<DictionaryEntry>()
+				.Select(i => i.Value)
+				.OfType<XmlRpcStruct>();
+
+			int countOfEverything = dictionaryEnties.Count();
+
+			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
+		}
+
+		#endregion Search By Hash tests
 	}
 }
