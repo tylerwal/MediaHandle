@@ -39,6 +39,8 @@ namespace SearchProcessing.Test.OpenSubtitles
 			_proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
 		}
 
+		#region ServerInfo
+
 		/// <summary>
 		/// Test to make sure the XMLRPC connection is working with the most basic method on OpenSubtitles: ServerInfo()
 		/// 
@@ -53,6 +55,8 @@ namespace SearchProcessing.Test.OpenSubtitles
 
 			Assert.AreEqual("http://www.opensubtitles.org", serviceInfo.WebsiteUrl, "The ServerInfo() method did not returned the expected website url.");
 		}
+
+		#endregion ServerInfo
 
 		#region LogIn Tests
 
@@ -112,7 +116,9 @@ namespace SearchProcessing.Test.OpenSubtitles
 		}
 
 		#endregion LogIn Tests
-		
+
+		#region LogOut
+
 		[TestMethod]
 		public void LogOutTest()
 		{
@@ -127,44 +133,32 @@ namespace SearchProcessing.Test.OpenSubtitles
 			Assert.AreEqual(ResponseStatusLookupId.NoSession, afterLogOutResponse.GetResponseStatus(), "The account is still logged in after a LogOut attempt.");
 		}
 
-		#region Search By Hash tests
+		#endregion LogOut
+
+		#region SearchByHash tests
 
 		/// <summary>
 		/// Tests the SearchByHash interface method.
 		/// </summary>
 		[TestMethod]
-		public void SearchByHashTest()
+		public void SearchByHashMatchFoundTest()
 		{
 			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
 
 			string hash = "073f8fc5d170434e";
-			hash = "000";
+			hash = "1E8AF369C4B2536D";
 
 			SearchByHashResponse searchResponse = _proxy.SearchByHash(logInResponse.Token, new string[]
 			{
 				hash
 			});
+			
+			object possibleMatch = searchResponse.MediaData[hash];
 
-			// foreach (XmlRpcStruct SearchResult in ((object[])ResponseStruct["data"]))
+			Assert.IsInstanceOfType(possibleMatch, typeof(XmlRpcStruct), "This hash should have been a match; please check manually.");
 
-			IEnumerable<DictionaryEntry> dictionaryEnties = searchResponse.MediaData
-															.OfType<DictionaryEntry>()
-															.Where(i => i.Value.GetType() == typeof(XmlRpcStruct));
-
-			int countOfEverything = dictionaryEnties.Count();
-			int countOfStructs = dictionaryEnties.Count(i => i.Value.GetType() == typeof(XmlRpcStruct));
-
-			foreach (DictionaryEntry test2 in searchResponse.MediaData)
-			{
-				var test3 = test2.Value;
-				Type valueType = test3.GetType();
-				Type test4 = test2.GetType();
-			}
-
-			var test = searchResponse.MediaData[hash];
-
-			//var type = test.GetType();
-
+			var match = possibleMatch as XmlRpcStruct;
+			
 			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
 		}
 
@@ -193,6 +187,6 @@ namespace SearchProcessing.Test.OpenSubtitles
 			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
 		}
 
-		#endregion Search By Hash tests
+		#endregion SearchByHash tests
 	}
 }

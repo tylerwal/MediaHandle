@@ -85,6 +85,7 @@ namespace FileProcessing
 
 		/// <summary>
 		/// Creates a list of files that are probably samples based on the name and file size.
+		/// Considers a file sampel if it has the word 'sample' and is under 50mb.
 		/// </summary>
 		/// <param name="movieFiles">List of all movie files.</param>
 		/// <returns>List of probably sample movie files.</returns>
