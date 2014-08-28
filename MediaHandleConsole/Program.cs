@@ -13,27 +13,32 @@ namespace MediaHandleConsole
 	{
 		static void Main(string[] args)
 		{
-			FileProcess fileProcess = new FileProcess(@"C:\MediaHandleTest\");
+			FileProcess fileProcess = new FileProcess(@"\\server\MainDriveSecondPartition\TV\");
 
-			IEnumerable<VideoFile> videoFiles = fileProcess.GetVideoFiles();
+			IEnumerable<VideoFile> videoFiles = fileProcess.GetVideoFiles().ToList();
 
 			IRequest movieDbRequest = new TheMovieDbRequest();
+
+			Console.WriteLine("Files Found: {0}", videoFiles.Count());
 
 			foreach (VideoFile videoFile in videoFiles)
 			{
 				try
 				{
 					string searchRequest = movieDbRequest.CreateSearchQuery(videoFile.Name);
-
+					
 					TheMovieDbRootResult searchResponse = RequestProcess.MakeRequest<TheMovieDbRootResult, TheMovieDbResult>(searchRequest);
 
 					TheMovieDbResult matchedMovie = searchResponse.Results.FirstOrDefault();
+
+					Console.Write("Hash: {0}      ", MediaHandleUtilities.HashUtility.ComputeMovieHash(videoFile.FileInfo.FullName));
 
 					if (matchedMovie != null)
 					{
 						string title = matchedMovie.Title;
 
-						Console.WriteLine("{0} - {1}", title, matchedMovie.ReleaseDate);
+						Console.WriteLine("{0} - {1}   ", title, matchedMovie.ReleaseDate);
+						
 
 						string path = TheMovieDbResult.CreatePosterHyperlink(matchedMovie.PosterPath);
 					}

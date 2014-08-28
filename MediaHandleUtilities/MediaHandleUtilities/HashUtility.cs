@@ -11,6 +11,11 @@ namespace MediaHandleUtilities
 		private const int _sixteenBitWordSize = 65536;
 		private const int _longSize = sizeof(long);
 
+		/// <summary>
+		/// Computes the movie hash.
+		/// </summary>
+		/// <param name="filePath">The file path.</param>
+		/// <returns>The hash string.</returns>
 		public static string ComputeMovieHash(string filePath)
 		{
 			byte[] result;
@@ -20,9 +25,14 @@ namespace MediaHandleUtilities
 			}
 			
 			// convert the result to a string representation
-			return BitConverter.ToString(result).Replace("-", string.Empty);
+			return BitConverter.ToString(result).Replace("-", string.Empty).ToLower();
 		}
 
+		/// <summary>
+		/// Computes the movie hash.
+		/// </summary>
+		/// <param name="input">The input.</param>
+		/// <returns>A byte array of the hash.</returns>
 		private static byte[] ComputeMovieHash(Stream input)
 		{
 			long streamSize = input.Length;
@@ -36,8 +46,7 @@ namespace MediaHandleUtilities
 
 			hash = ReadFile(input, buffer, hash);
 			
-			// I think the next line is not necessary because of the 'using' above
-			//input.Close();
+			input.Close();
 
 			// convert integer value of hash into array of bytes
 			byte[] result = BitConverter.GetBytes(hash);

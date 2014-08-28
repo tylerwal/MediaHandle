@@ -138,51 +138,115 @@ namespace SearchProcessing.Test.OpenSubtitles
 		#region SearchByHash tests
 
 		/// <summary>
-		/// Tests the SearchByHash interface method.
+		/// Tests the SearchByHash interface method when a known hash should only produce a single movie response.
 		/// </summary>
 		[TestMethod]
-		public void SearchByHashMatchFoundTest()
+		public void SearchByHashMovieMatchFoundTest()
 		{
 			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
 
-			string hash = "073f8fc5d170434e";
-			hash = "1E8AF369C4B2536D";
+			string hash = "1e8af369c4b2536d";
 
-			SearchByHashResponse searchResponse = _proxy.SearchByHash(logInResponse.Token, new string[]
-			{
-				hash
-			});
+			// hard coded movie = Ender's Game
+			// imdb @ http://www.imdb.com/title/tt1731141/
+			// open subtitles @ http://www.imdb.com/title/tt1731141/
+
+			SearchByHashResponse searchResponse = _proxy.SearchByHash(
+				logInResponse.Token, 
+				new string[] { hash }
+			);
 			
 			object possibleMatch = searchResponse.MediaData[hash];
-
 			Assert.IsInstanceOfType(possibleMatch, typeof(XmlRpcStruct), "This hash should have been a match; please check manually.");
+			
+			XmlRpcStruct match = possibleMatch as XmlRpcStruct;
 
-			var match = possibleMatch as XmlRpcStruct;
+			string returnedMovieHash = searchResponse.GetMediaDataField(SearchByHashResponse._movieHash);
+			Assert.AreEqual(hash, returnedMovieHash, "The returned hash did not match the initial hash.");
+
+			string returnedMovieImdbId = searchResponse.GetMediaDataField(SearchByHashResponse._movieImdbId);
+			Assert.AreEqual("1731141", returnedMovieImdbId, "The returned IMDB Id did not match the expected value.");
+
+			string returnedMovieYear = searchResponse.GetMediaDataField(SearchByHashResponse._movieYear);
+			Assert.AreEqual("2013", returnedMovieYear, "The returned year did not match the expected value.");
+
+			string returnedMovieName = searchResponse.GetMediaDataField(SearchByHashResponse._movieName);
+			Assert.AreEqual("Ender's Game", returnedMovieName, "The returned movie name did not match the expected value.");
+
+			string returnedMovieKind = searchResponse.GetMediaDataField(SearchByHashResponse._movieKind);
+			Assert.AreEqual("movie", returnedMovieKind, "The returned movie kind did not match the expected value.");
+
+			string returnedSeriesEpisode = searchResponse.GetMediaDataField(SearchByHashResponse._seriesEpisode);
+			Assert.AreEqual("0", returnedSeriesEpisode, "The returned series episode was not 0.");
+
+			string returnedSeriesSeason = searchResponse.GetMediaDataField(SearchByHashResponse._seriesSeason);
+			Assert.AreEqual("0", returnedSeriesSeason, "The returned series season was not 0.");
+
+			string returnedSeenCount = searchResponse.GetMediaDataField(SearchByHashResponse._seenCount);
+			int possibleNumber;
+			bool wasSuccesful = int.TryParse(returnedSeenCount, out possibleNumber);
+			Assert.IsTrue(wasSuccesful, "The returned seen count was not a number.");
+
+			string returnedSubCount = searchResponse.GetMediaDataField(SearchByHashResponse._subCount);
+			wasSuccesful = int.TryParse(returnedSubCount, out possibleNumber);
+			Assert.IsTrue(wasSuccesful, "The returned seen count was not a number.");
 			
 			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
 		}
 
 		/// <summary>
-		/// Tests the SearchByHash interface method when a known hash should only produce a single movie response.
+		/// Tests the SearchByHash interface method when a known hash should only produce a single tv episode response.
 		/// </summary>
 		[TestMethod]
-		public void SearchByHashSingleResponseTest()
+		public void SearchByHashTvEpisodeMatchFoundTest()
 		{
 			LogInResponse logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
 
-			const string hash = "073f8fc5d170434e";
+			string hash = "1e8af369c4b2536d";
 
-			SearchByHashResponse searchResponse = _proxy.SearchByHash(logInResponse.Token, new string[]
-			{
-				hash
-			});
+			// hard coded movie = Ender's Game
+			// imdb @ http://www.imdb.com/title/tt1731141/
+			// open subtitles @ http://www.imdb.com/title/tt1731141/
 
-			IEnumerable<XmlRpcStruct> dictionaryEnties = searchResponse.MediaData
-				.OfType<DictionaryEntry>()
-				.Select(i => i.Value)
-				.OfType<XmlRpcStruct>();
+			SearchByHashResponse searchResponse = _proxy.SearchByHash(
+				logInResponse.Token,
+				new string[] { hash }
+			);
 
-			int countOfEverything = dictionaryEnties.Count();
+			object possibleMatch = searchResponse.MediaData[hash];
+			Assert.IsInstanceOfType(possibleMatch, typeof(XmlRpcStruct), "This hash should have been a match; please check manually.");
+
+			XmlRpcStruct match = possibleMatch as XmlRpcStruct;
+
+			string returnedMovieHash = searchResponse.GetMediaDataField(SearchByHashResponse._movieHash);
+			Assert.AreEqual(hash, returnedMovieHash, "The returned hash did not match the initial hash.");
+
+			string returnedMovieImdbId = searchResponse.GetMediaDataField(SearchByHashResponse._movieImdbId);
+			Assert.AreEqual("1731141", returnedMovieImdbId, "The returned IMDB Id did not match the expected value.");
+
+			string returnedMovieYear = searchResponse.GetMediaDataField(SearchByHashResponse._movieYear);
+			Assert.AreEqual("2013", returnedMovieYear, "The returned year did not match the expected value.");
+
+			string returnedMovieName = searchResponse.GetMediaDataField(SearchByHashResponse._movieName);
+			Assert.AreEqual("Ender's Game", returnedMovieName, "The returned movie name did not match the expected value.");
+
+			string returnedMovieKind = searchResponse.GetMediaDataField(SearchByHashResponse._movieKind);
+			Assert.AreEqual("movie", returnedMovieKind, "The returned movie kind did not match the expected value.");
+
+			string returnedSeriesEpisode = searchResponse.GetMediaDataField(SearchByHashResponse._seriesEpisode);
+			Assert.AreEqual("0", returnedSeriesEpisode, "The returned series episode was not 0.");
+
+			string returnedSeriesSeason = searchResponse.GetMediaDataField(SearchByHashResponse._seriesSeason);
+			Assert.AreEqual("0", returnedSeriesSeason, "The returned series season was not 0.");
+
+			string returnedSeenCount = searchResponse.GetMediaDataField(SearchByHashResponse._seenCount);
+			int possibleNumber;
+			bool wasSuccesful = int.TryParse(returnedSeenCount, out possibleNumber);
+			Assert.IsTrue(wasSuccesful, "The returned seen count was not a number.");
+
+			string returnedSubCount = searchResponse.GetMediaDataField(SearchByHashResponse._subCount);
+			wasSuccesful = int.TryParse(returnedSubCount, out possibleNumber);
+			Assert.IsTrue(wasSuccesful, "The returned seen count was not a number.");
 
 			BasicResponse basicResponse = _proxy.LogOut(logInResponse.Token);
 		}
