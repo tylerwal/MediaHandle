@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 using CookComputing.XmlRpc;
 using System.Linq;
@@ -51,14 +52,22 @@ namespace SearchProcessing.OpenSubtitles.Domain
 
 		#region Properties Of Hash
 
+		/// <summary>
+		/// Gets the dictionary value of the XmlRpcStruct based on the key input.
+		/// </summary>
+		/// <param name="key">One of the known dictionary keys; they are constants in this class.</param>
+		/// <returns>The value of the key if there is a match; otherwise an empty string.</returns>
 		public string GetMediaDataField(string key)
 		{
 			string returnedValue = string.Empty;
 
-			if (MediaData.Count == 1)
+			IEnumerator enumerator = MediaData.Values.GetEnumerator();
+			enumerator.MoveNext();
+			XmlRpcStruct firstMatch = enumerator.Current as XmlRpcStruct;
+
+			if (MediaData.Count == 1 && firstMatch != null)
 			{
-				XmlRpcStruct match = MediaData.Values.OfType<XmlRpcStruct>().First();
-				returnedValue = match[key] as string;
+				returnedValue = firstMatch[key] as string;
 			}
 
 			return returnedValue;

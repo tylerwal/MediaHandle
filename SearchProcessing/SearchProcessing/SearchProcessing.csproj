@@ -53,8 +53,10 @@
     <Compile Include="Constracts\IRootObject.cs" />
     <Compile Include="OpenSubtitles\Domain\BasicResponse.cs" />
     <Compile Include="OpenSubtitles\Domain\MovieResponse.cs" />
+    <Compile Include="OpenSubtitles\Domain\OpenSubtitlesKind.cs" />
     <Compile Include="OpenSubtitles\Domain\ResponseStatusLookupId.cs" />
     <Compile Include="OpenSubtitles\Domain\SearchByHashResponse.cs" />
+    <Compile Include="OpenSubtitles\Domain\SearchByHashResponseWrapper.cs" />
     <Compile Include="OpenSubtitles\Domain\ServerInfo.cs" />
     <Compile Include="OpenSubtitles\Domain\LogInResponse.cs" />
     <Compile Include="OpenSubtitles\IOpenSubtitlesProxy.cs" />

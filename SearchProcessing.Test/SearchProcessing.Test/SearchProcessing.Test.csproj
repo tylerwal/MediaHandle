@@ -59,6 +59,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="OpenSubtitles\Domain\BasicResponseTest.cs" />
+    <Compile Include="OpenSubtitles\Domain\SearchByHashResponseTest.cs" />
+    <Compile Include="OpenSubtitles\Domain\SearchByHashResponseWrapperTest.cs" />
     <Compile Include="OpenSubtitles\OpenSubtitlesProxyTest.cs" />
     <Compile Include="OpenSubtitles\OpenSubtitlesProxyWrapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
