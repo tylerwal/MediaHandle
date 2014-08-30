@@ -1,4 +1,6 @@
-﻿namespace SearchProcessing.OpenSubtitles.Domain
+﻿using MediaHandleUtilities;
+
+namespace SearchProcessing.OpenSubtitles.Domain
 {
 	/// <summary>
 	/// Facade for a <see cref="SearchByHashResponse"/> object so that no dictionary keys are required; 
@@ -67,10 +69,12 @@
 			Year = ParseNumberField(basicResponse, SearchByHashResponse._movieYear);
 
 			Name = basicResponse.GetMediaDataField(SearchByHashResponse._movieName);
-
-			string returnedMovieKind = basicResponse.GetMediaDataField(SearchByHashResponse._movieKind);
-
-			var kinds = MediaHandleUtilities.EnumUtilities.GetEnumValueList<OpenSubtitlesKind>();
+			
+			KindLookupId = (int)EnumUtilities.GetMatchingEnum<OpenSubtitlesKind>(
+				basicResponse.GetMediaDataField(
+					SearchByHashResponse._movieKind
+				)
+			);
 
 			Season = ParseNumberField(basicResponse, SearchByHashResponse._seriesSeason);
 

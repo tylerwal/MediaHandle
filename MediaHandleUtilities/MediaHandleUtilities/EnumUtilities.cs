@@ -7,6 +7,23 @@ namespace MediaHandleUtilities
 {
 	public static class EnumUtilities
 	{
+		public static TEnum GetMatchingEnum<TEnum>(string text)
+		{
+			IEnumerable<TEnum> enumValues = GetEnumValueList<TEnum>();
+
+			foreach (TEnum enumValue in enumValues)
+			{
+				string possibleMatch = GetStringValue(enumValue as Enum);
+
+				if (possibleMatch == text)
+				{
+					return enumValue;
+				}
+			}
+
+			return default(TEnum);
+		}
+
 		public static IEnumerable<TEnum> GetEnumValueList<TEnum>()
 		{
 			return Enum.GetValues(typeof(TEnum)).OfType<TEnum>();

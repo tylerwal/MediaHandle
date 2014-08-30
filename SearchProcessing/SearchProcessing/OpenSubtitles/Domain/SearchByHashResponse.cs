@@ -1,8 +1,6 @@
-﻿using System;
+﻿using CookComputing.XmlRpc;
+using System;
 using System.Collections;
-
-using CookComputing.XmlRpc;
-using System.Linq;
 
 namespace SearchProcessing.OpenSubtitles.Domain
 {
@@ -47,7 +45,7 @@ namespace SearchProcessing.OpenSubtitles.Domain
 		public XmlRpcStruct MediaData
 		{
 			get;
-			private set;
+			internal set;
 		}
 
 		#region Properties Of Hash
@@ -62,12 +60,16 @@ namespace SearchProcessing.OpenSubtitles.Domain
 			string returnedValue = string.Empty;
 
 			IEnumerator enumerator = MediaData.Values.GetEnumerator();
-			enumerator.MoveNext();
-			XmlRpcStruct firstMatch = enumerator.Current as XmlRpcStruct;
+			bool isMoveValid = enumerator.MoveNext();
 
-			if (MediaData.Count == 1 && firstMatch != null)
+			if (isMoveValid)
 			{
-				returnedValue = firstMatch[key] as string;
+				XmlRpcStruct firstMatch = enumerator.Current as XmlRpcStruct;
+
+				if (MediaData.Count == 1 && firstMatch != null)
+				{
+					returnedValue = firstMatch[key] as string;
+				}
 			}
 
 			return returnedValue;

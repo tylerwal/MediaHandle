@@ -18,18 +18,22 @@ namespace SearchProcessing.OpenSubtitles
 		private string _userAgent;
 
 		private readonly IOpenSubtitlesProxy _proxy;
-
-		private readonly LogInResponse _logInResponse;
-
+		
 		#endregion Fields
 
 		#region Properties
+
+		internal LogInResponse LogInResponse
+		{
+			get;
+			set;
+		}
 
 		public string Token
 		{
 			get
 			{
-				return _logInResponse == null ? null : _logInResponse.Token;
+				return LogInResponse == null ? null : LogInResponse.Token;
 			}
 		}
 
@@ -43,7 +47,7 @@ namespace SearchProcessing.OpenSubtitles
 
 			_proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
 
-			_logInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
+			LogInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
 		}
 
 		#endregion Constructor
@@ -61,14 +65,14 @@ namespace SearchProcessing.OpenSubtitles
 
 		public ResponseStatusLookupId GetSessionStatus()
 		{
-			BasicResponse response = _proxy.SessionCheck(_logInResponse.Token);
+			BasicResponse response = _proxy.SessionCheck(LogInResponse.Token);
 
 			return response.GetResponseStatus();
 		}
 
 		public bool LogOut()
 		{
-			ResponseStatusLookupId status = _proxy.LogOut(_logInResponse.Token).GetResponseStatus();
+			ResponseStatusLookupId status = _proxy.LogOut(LogInResponse.Token).GetResponseStatus();
 
 			return status == ResponseStatusLookupId.Ok;
 		}
