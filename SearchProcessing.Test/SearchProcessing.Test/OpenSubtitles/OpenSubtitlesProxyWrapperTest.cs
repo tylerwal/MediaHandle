@@ -82,25 +82,17 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestMethod]
 		public void TokenLogInResponseNullTest()
 		{
-			/*ConfigurationSettings.Initialize();
-
-			string username = ConfigurationSettings.OpenSubtitles.Username;
-			string password = ConfigurationSettings.OpenSubtitles.Password;
-			string language = ConfigurationSettings.OpenSubtitles.Language;
-			string userAgent = ConfigurationSettings.OpenSubtitles.UserAgent;
-
-			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
-
-			LogInResponse logInResponse = proxy.LogIn(username, password, language, userAgent);*/
-
-			OpenSubtitlesProxyWrapper wrapper = new OpenSubtitlesProxyWrapper
+			using (OpenSubtitlesProxyWrapper wrapper = new OpenSubtitlesProxyWrapper())
 			{
-				LogInResponse = null
-			};
+				// revert to this later so that correctly done Dispose (log out) can occure
+				LogInResponse savedLogInResponse = wrapper.LogInResponse;
 
-			Assert.IsNull(wrapper.Token, "The Token should be null.");
+				wrapper.LogInResponse = null;
 
-			wrapper.Dispose();
+				Assert.IsNull(wrapper.Token, "The Token should be null.");
+
+				wrapper.LogInResponse = savedLogInResponse;
+			}
 		}
 	}
 }

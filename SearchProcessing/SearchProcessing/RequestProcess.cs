@@ -20,6 +20,11 @@ namespace SearchProcessing
 				HttpWebRequest request = WebRequest.CreateHttp(requestUrl);
 				using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
 				{
+					if (response == null)
+					{
+						return default(TRootResult);
+					}
+
 					if (response.StatusCode != HttpStatusCode.OK)
 					{
 						throw new Exception(String.Format("Server Error (HTTP {0}: {1}).", response.StatusCode, response.StatusDescription));

@@ -63,5 +63,21 @@ namespace SearchProcessing.Test.OpenSubtitles.Domain
 					);
 			}
 		}
+
+		/// <summary>
+		/// Tests the GetResponseStatus method when the Status parsing fails.
+		/// </summary>
+		[TestMethod]
+		public void GetResponseStatusParseFailTest()
+		{
+			BasicResponse basicResponse = new BasicResponse
+			{
+				Status = "unParsable"
+			};
+
+			ResponseStatusLookupId status = basicResponse.GetResponseStatus();
+
+			Assert.AreEqual(ResponseStatusLookupId.None, status, "The status should have been set to 'None'.");
+		}
 	}
 }

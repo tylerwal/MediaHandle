@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
-using CookComputing.XmlRpc;
+﻿using CookComputing.XmlRpc;
 using MediaHandleUtilities.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchProcessing.OpenSubtitles;
 using SearchProcessing.OpenSubtitles.Domain;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace SearchProcessing.Test.OpenSubtitles
