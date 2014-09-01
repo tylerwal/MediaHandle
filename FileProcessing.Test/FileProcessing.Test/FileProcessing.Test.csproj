@@ -54,10 +54,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DirectoryInfoUtilitiesTest.cs" />
     <Compile Include="FileProcessTest.cs" />
+    <Compile Include="FileInfoUtilitiesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FileProcessingUnitTestUtilities\FileProcessingUnitTestUtilities.csproj">
+      <Project>{653c3c4b-6ffa-466d-83f1-ca3510d74507}</Project>
+      <Name>FileProcessingUnitTestUtilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MediaHandleDomain\MediaHandleDomain\MediaHandleDomain.csproj">
       <Project>{a43f69b2-b28d-4186-9a50-5bcca2da1390}</Project>
       <Name>MediaHandleDomain</Name>
@@ -65,6 +71,14 @@
     <ProjectReference Include="..\..\MovieSearch\FileProcessing\FileProcessing.csproj">
       <Project>{87fa7d4b-8e8e-4f3c-b4b7-51ff6ee61e32}</Project>
       <Name>FileProcessing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SystemWrapper\SystemInterface\SystemInterface.csproj">
+      <Project>{6634e69d-1b08-4d6b-8c2f-5f88ebde53b4}</Project>
+      <Name>SystemInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SystemWrapper\SystemWrapper\SystemWrapper.csproj">
+      <Project>{b8deece0-6074-47c2-9af4-123ee324d212}</Project>
+      <Name>SystemWrapper</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

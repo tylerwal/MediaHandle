@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleConsole", "MediaHandleConsole\MediaHandleConsole.csproj", "{DE9ABED8-52FF-45F8-B754-306A7C32F5B5}"
 EndProject
@@ -39,7 +39,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemWrapper", "SystemWrap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemInterface", "SystemWrapper\SystemInterface\SystemInterface.csproj", "{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemWrapper.Tests", "SystemWrapper\SystemWrapper.Tests\SystemWrapper.Tests.csproj", "{977D8BEB-334E-4938-BAE0-CB75698B1255}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessingUnitTestUtilities", "FileProcessingUnitTestUtilities\FileProcessingUnitTestUtilities.csproj", "{653C3C4B-6FFA-466D-83F1-CA3510D74507}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -88,10 +88,10 @@ Global
 		SccProjectTopLevelParentUniqueName11 = MediaHandle.sln
 		SccProjectName11 = SystemWrapper/SystemInterface
 		SccLocalPath11 = SystemWrapper\\SystemInterface
-		SccProjectUniqueName12 = SystemWrapper\\SystemWrapper.Tests\\SystemWrapper.Tests.csproj
+		SccProjectUniqueName12 = FileProcessingUnitTestUtilities\\FileProcessingUnitTestUtilities.csproj
 		SccProjectTopLevelParentUniqueName12 = MediaHandle.sln
-		SccProjectName12 = SystemWrapper/SystemWrapper.Tests
-		SccLocalPath12 = SystemWrapper\\SystemWrapper.Tests
+		SccProjectName12 = FileProcessingUnitTestUtilities
+		SccLocalPath12 = FileProcessingUnitTestUtilities
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,23 +142,23 @@ Global
 		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{977D8BEB-334E-4938-BAE0-CB75698B1255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{977D8BEB-334E-4938-BAE0-CB75698B1255}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{977D8BEB-334E-4938-BAE0-CB75698B1255}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{977D8BEB-334E-4938-BAE0-CB75698B1255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{653C3C4B-6FFA-466D-83F1-CA3510D74507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653C3C4B-6FFA-466D-83F1-CA3510D74507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653C3C4B-6FFA-466D-83F1-CA3510D74507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653C3C4B-6FFA-466D-83F1-CA3510D74507}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{73F0D388-A089-4C9D-8E3B-4098271E505D} = {899B38B9-28F8-41F1-BBBC-C615D23A86C4}
-		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
 		{C3DDE97A-9AB7-4469-8F59-3DBC5A518401} = {899B38B9-28F8-41F1-BBBC-C615D23A86C4}
-		{00FF18B8-4357-4791-865E-2518039824CC} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
+		{73F0D388-A089-4C9D-8E3B-4098271E505D} = {899B38B9-28F8-41F1-BBBC-C615D23A86C4}
 		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
+		{87FA7D4B-8E8E-4F3C-B4B7-51FF6EE61E32} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
+		{653C3C4B-6FFA-466D-83F1-CA3510D74507} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
 		{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
+		{00FF18B8-4357-4791-865E-2518039824CC} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
 		{B8DEECE0-6074-47C2-9AF4-123EE324D212} = {6BF98AE3-0AED-4F1B-B338-E482DD4348F9}
 		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4} = {6BF98AE3-0AED-4F1B-B338-E482DD4348F9}
-		{977D8BEB-334E-4938-BAE0-CB75698B1255} = {6BF98AE3-0AED-4F1B-B338-E482DD4348F9}
 	EndGlobalSection
 EndGlobal

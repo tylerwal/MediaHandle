@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using FileProcessing.Constants;
 
 namespace FileProcessing
 {
@@ -12,13 +13,7 @@ namespace FileProcessing
 	{
 		#region Fields
 
-		private readonly List<string> _validMovieFileExtensionStrings;
-
-		private readonly IEnumerable<VideoDisplayResolutionLookupId> _videoDisplayResolutionEnums;
-
 		private readonly string _directoryPath;
-
-		private readonly List<string> _commonWordsToRemove; 
 
 		#endregion Fields
 
@@ -27,22 +22,6 @@ namespace FileProcessing
 		public FileProcess(string directoryPath)
 		{
 			_directoryPath = directoryPath;
-
-			_validMovieFileExtensionStrings = EnumUtilities.GetStringValuesExceptNone<MediaFileExtensionLookupId>();
-			
-			_videoDisplayResolutionEnums = EnumUtilities.GetEnumValueList<VideoDisplayResolutionLookupId>();
-
-			_commonWordsToRemove = new List<string>
-			{
-				"BluRay",
-				"x264",
-				"XVID",
-				"AC3",
-				"DVDScr",
-				"UNRATED",
-				"DvDrip",
-				"EXTENDED"
-			};
 		}
 
 		#endregion Constructor
@@ -80,7 +59,7 @@ namespace FileProcessing
 
 			IEnumerable<FileInfo> allFiles = moviesDirectoryInfo.GetFiles("*", SearchOption.AllDirectories);
 
-			return allFiles.Where(f => _validMovieFileExtensionStrings.Any(f.Extension.Equals)).ToList();
+			return allFiles.Where(f => ProcessingConstants.VideoFileExtensionStrings.Any(f.Extension.Equals)).ToList();
 		}
 
 		/// <summary>
@@ -133,7 +112,7 @@ namespace FileProcessing
 			fileName = fileName.Substring(0, fileNameLength - extensionLength);
 
 			// *********** Video Resolution ***********
-			VideoDisplayResolutionLookupId matchingDisplayId = _videoDisplayResolutionEnums
+			VideoDisplayResolutionLookupId matchingDisplayId = ProcessingConstants.VideoDisplayResolutionEnums
 					.FirstOrDefault(
 						i => fileName.Contains
 							(
@@ -166,7 +145,7 @@ namespace FileProcessing
 			}
 			
 			// *********** Remove garbage words ***********
-			foreach (string word in _commonWordsToRemove)
+			foreach (string word in ProcessingConstants.JunkWordsToIgnore)
 			{
 				fileName = fileName.Replace(word, string.Empty);
 			}

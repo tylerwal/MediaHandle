@@ -1,8 +1,4 @@
-﻿using CookComputing.XmlRpc;
-
-using MediaHandleUtilities.Configuration;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchProcessing.OpenSubtitles;
 using SearchProcessing.OpenSubtitles.Domain;
 

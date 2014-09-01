@@ -48,9 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constracts\IRequest.cs" />
-    <Compile Include="Constracts\IResult.cs" />
-    <Compile Include="Constracts\IRootObject.cs" />
+    <Compile Include="Contracts\IRequest.cs" />
+    <Compile Include="Contracts\IResult.cs" />
+    <Compile Include="Contracts\IRootObject.cs" />
     <Compile Include="OpenSubtitles\Domain\BasicResponse.cs" />
     <Compile Include="OpenSubtitles\Domain\MovieResponse.cs" />
     <Compile Include="OpenSubtitles\Domain\OpenSubtitlesKind.cs" />
