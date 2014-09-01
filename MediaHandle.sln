@@ -33,9 +33,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SearchProcessing", "SearchP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHandleDomainTest", "MediaHandleDomainTest\MediaHandleDomainTest\MediaHandleDomainTest.csproj", "{106F427F-610F-4A65-9A3A-69902928BEC7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SystemWrapper", "SystemWrapper", "{6BF98AE3-0AED-4F1B-B338-E482DD4348F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemWrapper", "SystemWrapper\SystemWrapper\SystemWrapper.csproj", "{B8DEECE0-6074-47C2-9AF4-123EE324D212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemInterface", "SystemWrapper\SystemInterface\SystemInterface.csproj", "{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemWrapper.Tests", "SystemWrapper\SystemWrapper.Tests\SystemWrapper.Tests.csproj", "{977D8BEB-334E-4938-BAE0-CB75698B1255}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 13
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tylerwal.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -72,6 +80,18 @@ Global
 		SccProjectUniqueName9 = MediaHandleDomainTest\\MediaHandleDomainTest\\MediaHandleDomainTest.csproj
 		SccProjectName9 = MediaHandleDomainTest/MediaHandleDomainTest
 		SccLocalPath9 = MediaHandleDomainTest\\MediaHandleDomainTest
+		SccProjectUniqueName10 = SystemWrapper\\SystemWrapper\\SystemWrapper.csproj
+		SccProjectTopLevelParentUniqueName10 = MediaHandle.sln
+		SccProjectName10 = SystemWrapper/SystemWrapper
+		SccLocalPath10 = SystemWrapper\\SystemWrapper
+		SccProjectUniqueName11 = SystemWrapper\\SystemInterface\\SystemInterface.csproj
+		SccProjectTopLevelParentUniqueName11 = MediaHandle.sln
+		SccProjectName11 = SystemWrapper/SystemInterface
+		SccLocalPath11 = SystemWrapper\\SystemInterface
+		SccProjectUniqueName12 = SystemWrapper\\SystemWrapper.Tests\\SystemWrapper.Tests.csproj
+		SccProjectTopLevelParentUniqueName12 = MediaHandle.sln
+		SccProjectName12 = SystemWrapper/SystemWrapper.Tests
+		SccLocalPath12 = SystemWrapper\\SystemWrapper.Tests
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +134,18 @@ Global
 		{106F427F-610F-4A65-9A3A-69902928BEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{106F427F-610F-4A65-9A3A-69902928BEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{106F427F-610F-4A65-9A3A-69902928BEC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8DEECE0-6074-47C2-9AF4-123EE324D212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8DEECE0-6074-47C2-9AF4-123EE324D212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8DEECE0-6074-47C2-9AF4-123EE324D212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8DEECE0-6074-47C2-9AF4-123EE324D212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977D8BEB-334E-4938-BAE0-CB75698B1255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977D8BEB-334E-4938-BAE0-CB75698B1255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977D8BEB-334E-4938-BAE0-CB75698B1255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977D8BEB-334E-4938-BAE0-CB75698B1255}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,5 +157,8 @@ Global
 		{00FF18B8-4357-4791-865E-2518039824CC} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
 		{FDD731D7-44E8-49C6-8AAB-5F8F6E5069FC} = {D6B8DF17-36CE-470F-9EC5-116C658DE972}
 		{800AC89B-1CAA-4253-93F9-2F3E7B1CDB93} = {7FEF7D5F-6154-4B98-AFAD-6018B25ECA5A}
+		{B8DEECE0-6074-47C2-9AF4-123EE324D212} = {6BF98AE3-0AED-4F1B-B338-E482DD4348F9}
+		{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4} = {6BF98AE3-0AED-4F1B-B338-E482DD4348F9}
+		{977D8BEB-334E-4938-BAE0-CB75698B1255} = {6BF98AE3-0AED-4F1B-B338-E482DD4348F9}
 	EndGlobalSection
 EndGlobal
