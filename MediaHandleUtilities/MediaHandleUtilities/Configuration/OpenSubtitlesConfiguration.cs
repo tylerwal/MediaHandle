@@ -4,6 +4,13 @@ namespace MediaHandleUtilities.Configuration
 {
 	public class OpenSubtitlesConfiguration : ConfigurationSection
 	{
+		[ConfigurationProperty("Url")]
+		public string Url
+		{
+			get { return (string)this["Url"]; }
+			//set { this["Username"] = value; }
+		}
+
 		[ConfigurationProperty("Username")]
 		public string Username
 		{

@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FileProcessingUnitTestUtilities\FileProcessingUnitTestUtilities.csproj">
+    <ProjectReference Include="..\..\FileProcessingUnitTestUtilities\FileProcessing.UnitTestUtilities.csproj">
       <Project>{653c3c4b-6ffa-466d-83f1-ca3510d74507}</Project>
-      <Name>FileProcessingUnitTestUtilities</Name>
+      <Name>FileProcessing.UnitTestUtilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MediaHandleDomain\MediaHandleDomain\MediaHandleDomain.csproj">
       <Project>{a43f69b2-b28d-4186-9a50-5bcca2da1390}</Project>

@@ -1,4 +1,7 @@
 ﻿using CookComputing.XmlRpc;
+
+using MediaHandleUtilities.Configuration;
+
 using SearchProcessing.OpenSubtitles.Domain;
 
 namespace SearchProcessing.OpenSubtitles
@@ -6,7 +9,7 @@ namespace SearchProcessing.OpenSubtitles
 	/// <summary>
 	/// Documenation @ http://trac.opensubtitles.org/projects/opensubtitles/wiki/XMLRPC
 	/// </summary>
-	[XmlRpcUrl("http://api.opensubtitles.org/xml-rpc")]
+	//[XmlRpcUrl("http://api.opensubtitles.org/xml-rpc")]
 	public interface IOpenSubtitlesProxy : IXmlRpcProxy
 	{
 		/// <summary>

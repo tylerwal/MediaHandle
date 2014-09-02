@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
-
-using SystemInterface.IO;
-
-using SystemWrapper.IO;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using SystemInterface.IO;
 
 namespace FileProcessing.Test
 {

@@ -16,18 +16,16 @@ namespace MediaHandleConsole
 			FileProcess fileProcess = new FileProcess(@"\\server\MainDriveSecondPartition\TV\");
 
 			IEnumerable<VideoFile> videoFiles = fileProcess.GetVideoFiles().ToList();
-
-			IRequest movieDbRequest = new TheMovieDbRequest();
-
+			
 			Console.WriteLine("Files Found: {0}", videoFiles.Count());
 
 			foreach (VideoFile videoFile in videoFiles)
 			{
 				try
 				{
-					string searchRequest = movieDbRequest.CreateSearchQuery(videoFile.Name);
+					string searchRequest = TheMovieDbRequest.CreateSearchQuery(videoFile.Name);
 					
-					TheMovieDbRootResult searchResponse = RequestProcess.MakeRequest<TheMovieDbRootResult, TheMovieDbResult>(searchRequest);
+					TheMovieDbRootResult searchResponse = RequestUtilities.MakeRequest<TheMovieDbRootResult, TheMovieDbResult>(searchRequest);
 
 					TheMovieDbResult matchedMovie = searchResponse.Results.FirstOrDefault();
 

@@ -6,10 +6,13 @@ namespace MediaHandleUtilities.Test.Configuration
 	[TestClass]
 	public class OpenSubtitlesConfigurationTest
 	{
-		[TestInitialize]
-		public void TestInitialize()
+		[TestMethod]
+		public void UrlTest()
 		{
-			ConfigurationSettings.Initialize();
+			string url = ConfigurationSettings.OpenSubtitles.Url;
+
+			Assert.IsNotNull(url, "The Username was not found in the app.config file.");
+			Assert.AreNotEqual(url, string.Empty, "The Username was empty in the app.config file.");
 		}
 
 		[TestMethod]

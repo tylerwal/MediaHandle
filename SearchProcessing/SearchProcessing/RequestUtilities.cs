@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Json;
 
 namespace SearchProcessing
 {
-	public static class RequestProcess
+	public static class RequestUtilities
 	{
 		#region Fields
 		

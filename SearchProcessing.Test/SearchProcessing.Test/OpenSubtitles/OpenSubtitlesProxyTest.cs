@@ -25,14 +25,14 @@ namespace SearchProcessing.Test.OpenSubtitles
 		[TestInitialize]
 		public void TestInitialize()
 		{
-			ConfigurationSettings.Initialize();
-
 			_username = ConfigurationSettings.OpenSubtitles.Username;
 			_password = ConfigurationSettings.OpenSubtitles.Password;
 			_language = ConfigurationSettings.OpenSubtitles.Language;
 			_userAgent = ConfigurationSettings.OpenSubtitles.UserAgent;
 
 			_proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
+
+			_proxy.Url = ConfigurationSettings.OpenSubtitles.Url;
 		}
 
 		#region ServerInfo

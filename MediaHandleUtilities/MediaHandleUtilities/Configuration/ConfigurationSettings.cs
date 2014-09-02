@@ -4,11 +4,50 @@ namespace MediaHandleUtilities.Configuration
 {
 	public static class ConfigurationSettings
 	{
-		public static OpenSubtitlesConfiguration OpenSubtitles { get; private set; }
+		#region Fields
 
-		public static void Initialize()
+		private static OpenSubtitlesConfiguration _openSubtitlesConfiguration;
+
+		private static TheMovieDbConfiguration _theMovieDbConfiguration;
+
+		#endregion Fields
+
+		#region Properties
+
+		public static OpenSubtitlesConfiguration OpenSubtitles
 		{
-			OpenSubtitles = ConfigurationManager.GetSection("OpenSubtitles") as OpenSubtitlesConfiguration;
+			get
+			{
+				if (_openSubtitlesConfiguration == null)
+				{
+					_openSubtitlesConfiguration = ConfigurationManager.GetSection("OpenSubtitles") as OpenSubtitlesConfiguration;
+				}
+
+				return _openSubtitlesConfiguration;
+			}
+			private set
+			{
+				_openSubtitlesConfiguration = value;
+			}
 		}
+
+		public static TheMovieDbConfiguration TheMovieDb
+		{
+			get
+			{
+				if (_theMovieDbConfiguration == null)
+				{
+					_theMovieDbConfiguration = ConfigurationManager.GetSection("TheMovieDb") as TheMovieDbConfiguration;
+				}
+
+				return _theMovieDbConfiguration;
+			}
+			private set
+			{
+				_theMovieDbConfiguration = value;
+			}
+		}
+
+		#endregion Properties
 	}
 }

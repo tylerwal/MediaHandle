@@ -36,6 +36,7 @@ Included items must then not match any entries in the exclude list to remain inc
                 <ModulePath>.*CPPUnitTestFramework.*</ModulePath>
                 <ModulePath>.*TestAdapter.*</ModulePath>
 			 <ModulePath>.*SystemWrapper.*</ModulePath>
+			 <ModulePath>.*UnitTestUtilities.dll</ModulePath>
               </Exclude>
             </ModulePaths>
 

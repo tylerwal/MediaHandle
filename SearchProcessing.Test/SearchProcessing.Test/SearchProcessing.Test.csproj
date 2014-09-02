@@ -64,6 +64,8 @@
     <Compile Include="OpenSubtitles\OpenSubtitlesProxyTest.cs" />
     <Compile Include="OpenSubtitles\OpenSubtitlesProxyWrapperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestUtilitiesTest.cs" />
+    <Compile Include="TheMovieDb\TheMovieDbRequestTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MediaHandleUtilities\MediaHandleUtilities\MediaHandleUtilities.csproj">

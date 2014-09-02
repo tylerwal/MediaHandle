@@ -46,6 +46,7 @@ namespace SearchProcessing.OpenSubtitles
 			InitializeConfiguration();
 
 			_proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
+			_proxy.Url = ConfigurationSettings.OpenSubtitles.Url;
 
 			LogInResponse = _proxy.LogIn(_username, _password, _language, _userAgent);
 		}
@@ -86,8 +87,6 @@ namespace SearchProcessing.OpenSubtitles
 		/// </summary>
 		private void InitializeConfiguration()
 		{
-			ConfigurationSettings.Initialize();
-
 			_username = ConfigurationSettings.OpenSubtitles.Username;
 			_password = ConfigurationSettings.OpenSubtitles.Password;
 			_language = ConfigurationSettings.OpenSubtitles.Language;
@@ -99,6 +98,8 @@ namespace SearchProcessing.OpenSubtitles
 		public static BasicResponse SessionCheck(string token)
 		{
 			IOpenSubtitlesProxy proxy = XmlRpcProxyGen.Create<IOpenSubtitlesProxy>();
+
+			proxy.Url = ConfigurationSettings.OpenSubtitles.Url;
 
 			return proxy.SessionCheck(token);
 		}

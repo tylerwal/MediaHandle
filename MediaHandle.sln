@@ -39,7 +39,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemWrapper", "SystemWrap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemInterface", "SystemWrapper\SystemInterface\SystemInterface.csproj", "{6634E69D-1B08-4D6B-8C2F-5F88EBDE53B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessingUnitTestUtilities", "FileProcessingUnitTestUtilities\FileProcessingUnitTestUtilities.csproj", "{653C3C4B-6FFA-466D-83F1-CA3510D74507}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessing.UnitTestUtilities", "FileProcessingUnitTestUtilities\FileProcessing.UnitTestUtilities.csproj", "{653C3C4B-6FFA-466D-83F1-CA3510D74507}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -88,7 +88,7 @@ Global
 		SccProjectTopLevelParentUniqueName11 = MediaHandle.sln
 		SccProjectName11 = SystemWrapper/SystemInterface
 		SccLocalPath11 = SystemWrapper\\SystemInterface
-		SccProjectUniqueName12 = FileProcessingUnitTestUtilities\\FileProcessingUnitTestUtilities.csproj
+		SccProjectUniqueName12 = FileProcessingUnitTestUtilities\\FileProcessing.UnitTestUtilities.csproj
 		SccProjectTopLevelParentUniqueName12 = MediaHandle.sln
 		SccProjectName12 = FileProcessingUnitTestUtilities
 		SccLocalPath12 = FileProcessingUnitTestUtilities
